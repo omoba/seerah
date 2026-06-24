@@ -1,0 +1,2614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Life of Prophet Muhammad ﷺ — A Seerah for Young Muslims</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark: #0B5E48;
+  --green-mid: #0F7A5E;
+  --green-light: #E0F4EC;
+  --gold: #C9970A;
+  --gold-light: #FFF8E6;
+  --gold-border: #E8C84A;
+  --sand: #FAF5E8;
+  --ink: #1A1A1A;
+  --ink-soft: #3D3D3D;
+  --ink-muted: #6B6B6B;
+  --surface: #FFFFFF;
+  --border: #E2E2E2;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--sand);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ══════════════════ HOME SCREEN ══════════════════ */
+#homeScreen {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(150deg, #0B5E48 0%, #08493A 55%, #157A5E 100%);
+  border-radius: 0 0 24px 24px;
+  padding: 2.5rem 2rem 2.25rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232,200,74,0.18);
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -50px; left: -50px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232,200,74,0.12);
+}
+.hero-arabic {
+  font-size: 26px;
+  color: #E8C84A;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+.hero-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  font-family: 'Georgia', serif;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 1.25rem;
+}
+
+/* Progress strip */
+.progress-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.6rem 1.25rem;
+  display: inline-flex;
+  margin: 0 auto;
+}
+.progress-bar {
+  width: 160px;
+  height: 6px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #E8C84A;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.progress-text {
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  font-family: 'Segoe UI', sans-serif;
+  white-space: nowrap;
+}
+
+/* Unit section */
+.unit-section {
+  margin-bottom: 2rem;
+}
+.unit-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.9rem;
+}
+.unit-num {
+  background: var(--green-dark);
+  color: #E8C84A;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.unit-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green-dark);
+  font-family: 'Segoe UI', sans-serif;
+}
+.unit-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Tile grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+/* Individual tile */
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem 1rem;
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s, border-color 0.13s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(11,94,72,0.12);
+  border-color: #A8DFC8;
+}
+.tile.done {
+  background: #F4FCF8;
+  border-color: #B8E8D0;
+}
+.tile.done::after {
+  content: '✓';
+  position: absolute;
+  top: 8px; right: 10px;
+  font-size: 12px;
+  color: var(--green-mid);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+}
+.tile-emoji {
+  font-size: 22px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.tile-num {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  font-family: 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tile-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.4;
+}
+.tile-unit-tag {
+  font-size: 10px;
+  color: var(--green-dark);
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--green-light);
+  border-radius: 10px;
+  padding: 2px 8px;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* ══════════════════ LESSON SCREEN ══════════════════ */
+#lessonScreen {
+  display: none;
+  min-height: 100vh;
+  background: var(--sand);
+}
+
+/* Lesson top bar */
+.lesson-topbar {
+  background: var(--green-dark);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.back-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.back-btn:hover { background: rgba(255,255,255,0.22); }
+.topbar-info {
+  flex: 1;
+  min-width: 0;
+}
+.topbar-lesson-num {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.topbar-lesson-title {
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.topbar-pbar {
+  width: 80px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.topbar-pfill {
+  height: 100%;
+  background: #E8C84A;
+  border-radius: 2px;
+  transition: width 0.4s;
+}
+.topbar-pct {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Segoe UI', sans-serif;
+  min-width: 28px;
+}
+
+/* Lesson body */
+.lesson-body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+  animation: fadeUp 0.25s ease;
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.lesson-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green-mid);
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 0.5rem;
+}
+.lesson-h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.lesson-loc {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 1.75rem;
+}
+.lesson-loc::before { content: '📍 '; }
+
+/* Content blocks */
+.block { margin-bottom: 1.25rem; }
+
+.prose {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.prose h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Segoe UI', sans-serif;
+}
+.prose p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 0.8rem;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { font-weight: 700; color: var(--ink); }
+.prose em { font-style: italic; color: var(--ink); }
+
+.gold-box {
+  background: var(--gold-light);
+  border: 1px solid #E0B830;
+  border-radius: var(--radius);
+  padding: 1.1rem 1.4rem;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #5A3F00;
+  font-family: 'Segoe UI', sans-serif;
+}
+.gold-box .lbl { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--gold); margin-bottom: 6px; display: block; }
+.gold-box strong { color: #3D2800; font-weight: 700; }
+
+.quran-box {
+  background: #EBF5E0;
+  border-left: 4px solid #5A9E1A;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #1F4A04;
+  font-family: 'Segoe UI', sans-serif;
+}
+.quran-box .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: #5A9E1A; margin-bottom: 5px; display: block; }
+
+.purple-box {
+  background: #F0EFFD;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #28235C;
+  font-family: 'Segoe UI', sans-serif;
+}
+.purple-box .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: #5B56C0; margin-bottom: 5px; display: block; }
+
+.red-box {
+  background: #FEF0EE;
+  border-left: 4px solid #C84030;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5A1810;
+  font-family: 'Segoe UI', sans-serif;
+}
+.red-box .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: #C84030; margin-bottom: 5px; display: block; }
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0.5rem 0;
+}
+.badge {
+  background: var(--green-light);
+  border: 1px solid #A8DFC8;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  color: var(--green-dark);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+}
+
+/* Lesson nav footer */
+.lesson-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.nav-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.12s;
+}
+.nav-btn:hover:not(:disabled) { background: var(--green-light); border-color: #A8DFC8; }
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav-btn.primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); font-weight: 600; }
+.nav-btn.primary:hover { background: #094D3B; }
+.nav-btn.home-btn {
+  background: rgba(11,94,72,0.07);
+  border-color: #A8DFC8;
+  color: var(--green-dark);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  padding: 0.75rem 1.1rem;
+}
+.nav-btn.home-btn:hover { background: var(--green-light); }
+
+/* Final card */
+.final-card {
+  background: linear-gradient(135deg, #0B5E48, #1D9E75);
+  border-radius: 14px;
+  padding: 1.75rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.final-arabic { font-size: 24px; color: #E8C84A; margin-bottom: 0.6rem; }
+.final-text { font-size: 15px; color: rgba(255,255,255,0.92); line-height: 1.8; font-family: 'Segoe UI', sans-serif; }
+
+/* ══════════════════ ACTIVITY SCREEN ══════════════════ */
+#activityScreen {
+  display: none;
+  min-height: 100vh;
+  background: var(--sand);
+}
+.act-topbar {
+  background: var(--green-dark);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.act-topbar-info { flex: 1; min-width: 0; }
+.act-topbar-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.act-topbar-title {
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.act-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.act-pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: background 0.3s;
+}
+.act-pip.done { background: #E8C84A; }
+.act-pip.current { background: #fff; }
+.act-body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+  animation: fadeUp 0.25s ease;
+}
+.act-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.act-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--green-mid);
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 0.6rem;
+}
+.act-question {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+}
+/* MCQ options */
+.act-options { display: flex; flex-direction: column; gap: 8px; }
+.act-option {
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--ink-soft);
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.act-option:hover:not(:disabled) { border-color: #A8DFC8; background: var(--green-light); }
+.act-option.correct { border-color: #5A9E1A; background: #EBF5E0; color: #1F4A04; font-weight: 600; }
+.act-option.wrong { border-color: #C84030; background: #FEF0EE; color: #5A1810; }
+.act-option:disabled { cursor: default; }
+/* T/F buttons */
+.act-tf { display: flex; gap: 10px; }
+.act-tf-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  transition: border-color 0.15s, background 0.15s;
+}
+.act-tf-btn:hover:not(:disabled) { border-color: #A8DFC8; background: var(--green-light); }
+.act-tf-btn.correct { border-color: #5A9E1A; background: #EBF5E0; color: #1F4A04; }
+.act-tf-btn.wrong { border-color: #C84030; background: #FEF0EE; color: #5A1810; }
+.act-tf-btn:disabled { cursor: default; }
+/* Fill-in */
+.act-fillin-row { display: flex; gap: 8px; align-items: stretch; }
+.act-input {
+  flex: 1;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  outline: none;
+}
+.act-input:focus { border-color: var(--green-mid); }
+.act-input.correct { border-color: #5A9E1A; background: #EBF5E0; }
+.act-input.wrong { border-color: #C84030; background: #FEF0EE; }
+.act-submit {
+  padding: 0 1.1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.act-submit:hover { background: #094D3B; }
+/* Ordering */
+.act-order-list { display: flex; flex-direction: column; gap: 7px; }
+.act-order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 13.5px;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--ink-soft);
+}
+.act-order-item .ord-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.act-order-btns { display: flex; flex-direction: column; gap: 2px; margin-left: auto; }
+.act-order-btn {
+  width: 24px; height: 22px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-muted);
+}
+.act-order-btn:hover { background: var(--green-light); border-color: #A8DFC8; }
+.act-order-check {
+  margin-top: 10px;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+}
+.act-order-check:hover { background: #094D3B; }
+.act-order-item.correct { border-color: #5A9E1A; background: #EBF5E0; }
+.act-order-item.wrong { border-color: #C84030; background: #FEF0EE; }
+/* Reflection */
+.act-reflection-input {
+  width: 100%;
+  min-height: 90px;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  background: var(--surface);
+}
+.act-reflection-input:focus { border-color: var(--green-mid); }
+/* Feedback */
+.act-feedback {
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  font-family: 'Segoe UI', sans-serif;
+  display: none;
+}
+.act-feedback.show { display: block; }
+.act-feedback.ok { background: #EBF5E0; color: #1F4A04; border-left: 3px solid #5A9E1A; }
+.act-feedback.bad { background: #FEF0EE; color: #5A1810; border-left: 3px solid #C84030; }
+.act-feedback.info { background: var(--gold-light); color: #5A3F00; border-left: 3px solid #E0B830; }
+/* Nav row */
+.act-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+/* Score card */
+.act-score-card {
+  background: linear-gradient(135deg, #0B5E48, #1D9E75);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.act-score-emoji { font-size: 48px; margin-bottom: 0.5rem; }
+.act-score-title { font-size: 20px; font-weight: 700; color: #fff; font-family: 'Segoe UI', sans-serif; margin-bottom: 0.4rem; }
+.act-score-sub { font-size: 14px; color: rgba(255,255,255,0.8); font-family: 'Segoe UI', sans-serif; margin-bottom: 1.25rem; }
+.act-score-num { font-size: 36px; font-weight: 700; color: #E8C84A; }
+
+/* Activities button in lesson nav */
+.nav-btn.act-btn {
+  background: #E8C84A;
+  border-color: #C9970A;
+  color: #3D2800;
+  font-weight: 700;
+}
+.nav-btn.act-btn:hover { background: #d4b030; }
+
+@media (max-width: 480px) {
+  .act-body { padding: 1.25rem 0.85rem 3.5rem; }
+  .act-question { font-size: 15px; }
+  .act-score-num { font-size: 28px; }
+}
+
+/* ══════════════════ SA'I SIMULATION ══════════════════ */
+.sai-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+.sai-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--green-dark);
+  margin-bottom: 0.9rem;
+  text-align: center;
+}
+.sai-track-wrap {
+  position: relative;
+  padding: 0 44px;
+  margin-bottom: 0.75rem;
+}
+.sai-hills {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4px;
+}
+.sai-hill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+  background: var(--green-light);
+  border-radius: 8px 8px 0 0;
+  padding: 4px 10px 3px;
+  text-align: center;
+  min-width: 52px;
+}
+.sai-track {
+  position: relative;
+  height: 36px;
+  background: linear-gradient(to bottom, #f5e9d0, #ede0c0);
+  border-radius: 6px;
+  border: 1px solid #d9c89a;
+  overflow: hidden;
+}
+.sai-figure {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  line-height: 1;
+  transition: left 1.6s cubic-bezier(0.45, 0, 0.55, 1);
+  will-change: left;
+}
+.sai-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+}
+.sai-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.sai-dot.done {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  color: #fff;
+}
+.sai-dot.active {
+  background: #E8C84A;
+  border-color: #C9970A;
+  color: #3D2800;
+}
+.sai-status {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin-bottom: 0.75rem;
+  min-height: 18px;
+}
+.sai-status strong { color: var(--ink); }
+.sai-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.sai-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.sai-btn-start { background: var(--green-dark); color: #fff; }
+.sai-btn-start:hover { background: #094D3B; }
+.sai-btn-reset { background: var(--green-light); color: var(--green-dark); border: 1px solid #A8DFC8; }
+.sai-btn-reset:hover { background: #c8eedd; }
+
+/* ══════════════════ RESPONSIVE ══════════════════ */
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .hero { padding: 2rem 1.25rem 1.75rem; border-radius: 0 0 18px 18px; }
+  .hero-arabic { font-size: 22px; }
+  .hero-title { font-size: 19px; }
+  .hero-sub { font-size: 12px; }
+  .progress-bar { width: 120px; }
+
+  .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .tile { padding: 0.9rem 0.85rem 0.85rem; }
+  .tile-title { font-size: 12.5px; }
+
+  .lesson-body { padding: 1.5rem 1rem 4rem; }
+  .lesson-h1 { font-size: 22px; }
+  .prose { padding: 1rem 1.1rem; }
+  .prose p { font-size: 14.5px; }
+  .gold-box, .quran-box, .purple-box, .red-box { padding: 0.9rem 1rem; font-size: 13.5px; }
+
+  .topbar-pbar { width: 60px; }
+  .topbar-lesson-title { font-size: 13px; }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  #homeScreen { padding: 0 0.75rem 2.5rem; }
+
+  .hero { padding: 1.5rem 1rem 1.5rem; border-radius: 0 0 14px 14px; }
+  .hero-arabic { font-size: 18px; letter-spacing: 1px; }
+  .hero-title { font-size: 16px; }
+  .hero-sub { font-size: 11px; margin-bottom: 1rem; }
+  .progress-strip { padding: 0.5rem 1rem; gap: 8px; }
+  .progress-bar { width: 90px; }
+  .progress-text { font-size: 11px; }
+
+  .unit-heading { margin-bottom: 0.7rem; }
+  .unit-name { font-size: 12.5px; }
+
+  .tile-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .tile { padding: 0.75rem 0.7rem 0.7rem; gap: 4px; }
+  .tile-emoji { font-size: 18px; }
+  .tile-num { font-size: 9px; }
+  .tile-title { font-size: 11.5px; line-height: 1.35; }
+  .tile-unit-tag { font-size: 9px; padding: 2px 6px; }
+
+  .lesson-topbar { padding: 0.7rem 0.9rem; gap: 8px; }
+  .back-btn { font-size: 12px; padding: 0.35rem 0.7rem; }
+  .topbar-lesson-num { font-size: 9px; }
+  .topbar-lesson-title { font-size: 12px; }
+  .topbar-pbar { display: none; }
+  .topbar-pct { font-size: 11px; }
+
+  .lesson-body { padding: 1.25rem 0.85rem 3.5rem; }
+  .lesson-eyebrow { font-size: 10px; }
+  .lesson-h1 { font-size: 19px; }
+  .lesson-loc { font-size: 12px; margin-bottom: 1.25rem; }
+
+  .prose { padding: 0.85rem 0.9rem; }
+  .prose h3 { font-size: 13.5px; }
+  .prose p { font-size: 14px; line-height: 1.75; }
+
+  .gold-box, .purple-box { padding: 0.8rem 0.9rem; font-size: 13px; border-radius: 10px; }
+  .quran-box, .red-box { padding: 0.8rem 0.9rem; font-size: 13px; }
+  .gold-box .lbl, .quran-box .lbl, .purple-box .lbl, .red-box .lbl { font-size: 9.5px; }
+
+  .badges { gap: 5px; }
+  .badge { font-size: 11.5px; padding: 3px 9px; }
+
+  .lesson-nav { gap: 7px; margin-top: 1.5rem; padding-top: 1.25rem; flex-wrap: wrap; }
+  .nav-btn { font-size: 13px; padding: 0.65rem 0.75rem; flex: 1 1 40%; }
+  .nav-btn.home-btn { flex: 0 0 auto; }
+
+  .final-card { padding: 1.25rem; }
+  .final-arabic { font-size: 20px; }
+  .final-text { font-size: 13.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HOME SCREEN — Tile Grid
+════════════════════════════════════════════ -->
+<div id="homeScreen">
+
+  <div class="hero">
+    <div class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <div class="hero-title">The Life of Prophet Muhammad ﷺ</div>
+    <div class="hero-sub">A Seerah for Young Muslims · Based on Ahlus Sunnah wal Jama'ah · 63 Lessons</div>
+    <div class="progress-strip">
+      <span class="progress-text" id="homeDoneCount">0 of 63 lessons completed</span>
+      <div class="progress-bar"><div class="progress-fill" id="homeProgressFill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- UNIT 1 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 1</span>
+      <span class="unit-name">The World Before the Prophet</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile0" onclick="openLesson(0)">
+        <div class="tile-emoji">🌍</div>
+        <div class="tile-num">Lesson 1</div>
+        <div class="tile-title">Where Is Makkah?</div>
+        <div class="tile-unit-tag">Unit 1</div>
+      </div>
+      <div class="tile" id="tile1" onclick="openLesson(1)">
+        <div class="tile-emoji">🤲</div>
+        <div class="tile-num">Lesson 2</div>
+        <div class="tile-title">Ibrahim ﷺ & the Desert Journey</div>
+        <div class="tile-unit-tag">Unit 1</div>
+      </div>
+      <div class="tile" id="tile2" onclick="openLesson(2)">
+        <div class="tile-emoji">💧</div>
+        <div class="tile-num">Lesson 3</div>
+        <div class="tile-title">Hajar's Search & the Zamzam Miracle</div>
+        <div class="tile-unit-tag">Unit 1</div>
+      </div>
+      <div class="tile" id="tile3" onclick="openLesson(3)">
+        <div class="tile-emoji">🕋</div>
+        <div class="tile-num">Lesson 4</div>
+        <div class="tile-title">Building the Ka'bah</div>
+        <div class="tile-unit-tag">Unit 1</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 2 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 2</span>
+      <span class="unit-name">His Birth & Early Life</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile4" onclick="openLesson(4)">
+        <div class="tile-emoji">👨‍👩‍👦</div>
+        <div class="tile-num">Lesson 5</div>
+        <div class="tile-title">His Parents: Abdullah & Aminah</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile5" onclick="openLesson(5)">
+        <div class="tile-emoji">🐘</div>
+        <div class="tile-num">Lesson 6</div>
+        <div class="tile-title">The Army of Elephants</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile6" onclick="openLesson(6)">
+        <div class="tile-emoji">⭐</div>
+        <div class="tile-num">Lesson 7</div>
+        <div class="tile-title">Birth: The Year of the Elephant</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile7" onclick="openLesson(7)">
+        <div class="tile-emoji">🌿</div>
+        <div class="tile-num">Lesson 8</div>
+        <div class="tile-title">Halimah & the Desert Years</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile8" onclick="openLesson(8)">
+        <div class="tile-emoji">👼</div>
+        <div class="tile-num">Lesson 9</div>
+        <div class="tile-title">The Opening of the Chest</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile9" onclick="openLesson(9)">
+        <div class="tile-emoji">🕊️</div>
+        <div class="tile-num">Lesson 10</div>
+        <div class="tile-title">Returned to Mother — Then Orphaned Again</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+      <div class="tile" id="tile10" onclick="openLesson(10)">
+        <div class="tile-emoji">👴</div>
+        <div class="tile-num">Lesson 11</div>
+        <div class="tile-title">With Grandfather Abd al-Muttalib</div>
+        <div class="tile-unit-tag">Unit 2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 3 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 3</span>
+      <span class="unit-name">Youth & Character</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile11" onclick="openLesson(11)">
+        <div class="tile-emoji">🧑‍🤝‍🧑</div>
+        <div class="tile-num">Lesson 12</div>
+        <div class="tile-title">With Uncle Abu Talib</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+      <div class="tile" id="tile12" onclick="openLesson(12)">
+        <div class="tile-emoji">📜</div>
+        <div class="tile-num">Lesson 13</div>
+        <div class="tile-title">The Monk Bahirah's Recognition</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+      <div class="tile" id="tile13" onclick="openLesson(13)">
+        <div class="tile-emoji">⭐</div>
+        <div class="tile-num">Lesson 14</div>
+        <div class="tile-title">Al-Amin & As-Sadiq — His Nicknames</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+      <div class="tile" id="tile14" onclick="openLesson(14)">
+        <div class="tile-emoji">🕋</div>
+        <div class="tile-num">Lesson 15</div>
+        <div class="tile-title">The Black Stone — His Wisdom</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+      <div class="tile" id="tile15" onclick="openLesson(15)">
+        <div class="tile-emoji">🐑</div>
+        <div class="tile-num">Lesson 16</div>
+        <div class="tile-title">His Work: Shepherd & Trader</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+      <div class="tile" id="tile16" onclick="openLesson(16)">
+        <div class="tile-emoji">⚖️</div>
+        <div class="tile-num">Lesson 17</div>
+        <div class="tile-title">Hilf al-Fudul — The Pact of Justice</div>
+        <div class="tile-unit-tag">Unit 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 4 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 4</span>
+      <span class="unit-name">Marriage & Family</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile17" onclick="openLesson(17)">
+        <div class="tile-emoji">💼</div>
+        <div class="tile-num">Lesson 18</div>
+        <div class="tile-title">Khadijah رضي الله عنها — The Businesswoman</div>
+        <div class="tile-unit-tag">Unit 4</div>
+      </div>
+      <div class="tile" id="tile18" onclick="openLesson(18)">
+        <div class="tile-emoji">🐪</div>
+        <div class="tile-num">Lesson 19</div>
+        <div class="tile-title">The Trade Journey to Syria</div>
+        <div class="tile-unit-tag">Unit 4</div>
+      </div>
+      <div class="tile" id="tile19" onclick="openLesson(19)">
+        <div class="tile-emoji">💍</div>
+        <div class="tile-num">Lesson 20</div>
+        <div class="tile-title">Khadijah Proposes — They Marry</div>
+        <div class="tile-unit-tag">Unit 4</div>
+      </div>
+      <div class="tile" id="tile20" onclick="openLesson(20)">
+        <div class="tile-emoji">👶</div>
+        <div class="tile-num">Lesson 21</div>
+        <div class="tile-title">His Children</div>
+        <div class="tile-unit-tag">Unit 4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 5 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 5</span>
+      <span class="unit-name">Revelation Begins</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile21" onclick="openLesson(21)">
+        <div class="tile-emoji">🏔️</div>
+        <div class="tile-num">Lesson 22</div>
+        <div class="tile-title">The Cave of Hira</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+      <div class="tile" id="tile22" onclick="openLesson(22)">
+        <div class="tile-emoji">📖</div>
+        <div class="tile-num">Lesson 23</div>
+        <div class="tile-title">The First Revelation — Jibreel ﷺ Appears</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+      <div class="tile" id="tile23" onclick="openLesson(23)">
+        <div class="tile-emoji">💛</div>
+        <div class="tile-num">Lesson 24</div>
+        <div class="tile-title">Khadijah Comforts Him & Waraqah's Words</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+      <div class="tile" id="tile24" onclick="openLesson(24)">
+        <div class="tile-emoji">🏠</div>
+        <div class="tile-num">Lesson 25</div>
+        <div class="tile-title">Islam in Secret — Dar al-Arqam</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+      <div class="tile" id="tile25" onclick="openLesson(25)">
+        <div class="tile-emoji">🌱</div>
+        <div class="tile-num">Lesson 26</div>
+        <div class="tile-title">The First Muslims</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+      <div class="tile" id="tile26" onclick="openLesson(26)">
+        <div class="tile-emoji">⭐</div>
+        <div class="tile-num">Lesson 27</div>
+        <div class="tile-title">Abu Bakr Accepts Islam</div>
+        <div class="tile-unit-tag">Unit 5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 6 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 6</span>
+      <span class="unit-name">Islam Goes Public</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile27" onclick="openLesson(27)">
+        <div class="tile-emoji">📢</div>
+        <div class="tile-num">Lesson 28</div>
+        <div class="tile-title">Calling Openly from As-Safa</div>
+        <div class="tile-unit-tag">Unit 6</div>
+      </div>
+      <div class="tile" id="tile28" onclick="openLesson(28)">
+        <div class="tile-emoji">😠</div>
+        <div class="tile-num">Lesson 29</div>
+        <div class="tile-title">Abu Lahab & Surah Al-Masad</div>
+        <div class="tile-unit-tag">Unit 6</div>
+      </div>
+      <div class="tile" id="tile29" onclick="openLesson(29)">
+        <div class="tile-emoji">🤝</div>
+        <div class="tile-num">Lesson 30</div>
+        <div class="tile-title">The Deal Offer — Surah Al-Kafirun</div>
+        <div class="tile-unit-tag">Unit 6</div>
+      </div>
+      <div class="tile" id="tile30" onclick="openLesson(30)">
+        <div class="tile-emoji">🗡️</div>
+        <div class="tile-num">Lesson 31</div>
+        <div class="tile-title">Umar's Journey to Islam</div>
+        <div class="tile-unit-tag">Unit 6</div>
+      </div>
+      <div class="tile" id="tile31" onclick="openLesson(31)">
+        <div class="tile-emoji">🦁</div>
+        <div class="tile-num">Lesson 32</div>
+        <div class="tile-title">Hamza Accepts Islam</div>
+        <div class="tile-unit-tag">Unit 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 7 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 7</span>
+      <span class="unit-name">Persecution & Endurance</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile32" onclick="openLesson(32)">
+        <div class="tile-emoji">💰</div>
+        <div class="tile-num">Lesson 33</div>
+        <div class="tile-title">Why Did Quraysh Hate Islam?</div>
+        <div class="tile-unit-tag">Unit 7</div>
+      </div>
+      <div class="tile" id="tile33" onclick="openLesson(33)">
+        <div class="tile-emoji">🌸</div>
+        <div class="tile-num">Lesson 34</div>
+        <div class="tile-title">Sumayyah — The First Martyr</div>
+        <div class="tile-unit-tag">Unit 7</div>
+      </div>
+      <div class="tile" id="tile34" onclick="openLesson(34)">
+        <div class="tile-emoji">⛓️</div>
+        <div class="tile-num">Lesson 35</div>
+        <div class="tile-title">Bilal — Tortured but Unbreakable</div>
+        <div class="tile-unit-tag">Unit 7</div>
+      </div>
+      <div class="tile" id="tile35" onclick="openLesson(35)">
+        <div class="tile-emoji">📜</div>
+        <div class="tile-num">Lesson 36</div>
+        <div class="tile-title">The Boycott — Three Years in the Valley</div>
+        <div class="tile-unit-tag">Unit 7</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 8 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 8</span>
+      <span class="unit-name">Migration to Abyssinia</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile36" onclick="openLesson(36)">
+        <div class="tile-emoji">🚢</div>
+        <div class="tile-num">Lesson 37</div>
+        <div class="tile-title">Escaping to Abyssinia</div>
+        <div class="tile-unit-tag">Unit 8</div>
+      </div>
+      <div class="tile" id="tile37" onclick="openLesson(37)">
+        <div class="tile-emoji">🗣️</div>
+        <div class="tile-num">Lesson 38</div>
+        <div class="tile-title">Ja'far Speaks Before the King</div>
+        <div class="tile-unit-tag">Unit 8</div>
+      </div>
+      <div class="tile" id="tile38" onclick="openLesson(38)">
+        <div class="tile-emoji">👑</div>
+        <div class="tile-num">Lesson 39</div>
+        <div class="tile-title">The Negus Accepts Islam — Muslims Return</div>
+        <div class="tile-unit-tag">Unit 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 9 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 9</span>
+      <span class="unit-name">The Year of Sadness</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile39" onclick="openLesson(39)">
+        <div class="tile-emoji">💔</div>
+        <div class="tile-num">Lesson 40</div>
+        <div class="tile-title">Death of Khadijah رضي الله عنها</div>
+        <div class="tile-unit-tag">Unit 9</div>
+      </div>
+      <div class="tile" id="tile40" onclick="openLesson(40)">
+        <div class="tile-emoji">🪨</div>
+        <div class="tile-num">Lesson 41</div>
+        <div class="tile-title">The Journey to Taif — A Hard Day</div>
+        <div class="tile-unit-tag">Unit 9</div>
+      </div>
+      <div class="tile" id="tile41" onclick="openLesson(41)">
+        <div class="tile-emoji">🕊️</div>
+        <div class="tile-num">Lesson 42</div>
+        <div class="tile-title">Abu Talib's Last Breath</div>
+        <div class="tile-unit-tag">Unit 9</div>
+      </div>
+      <div class="tile" id="tile42" onclick="openLesson(42)">
+        <div class="tile-emoji">🌙</div>
+        <div class="tile-num">Lesson 43</div>
+        <div class="tile-title">Isra wal Mi'raj — The Night Journey</div>
+        <div class="tile-unit-tag">Unit 9</div>
+      </div>
+      <div class="tile" id="tile43" onclick="openLesson(43)">
+        <div class="tile-emoji">🕌</div>
+        <div class="tile-num">Lesson 44</div>
+        <div class="tile-title">The Gift of Five Daily Prayers</div>
+        <div class="tile-unit-tag">Unit 9</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 10 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 10</span>
+      <span class="unit-name">The Great Migration</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile44" onclick="openLesson(44)">
+        <div class="tile-emoji">🤝</div>
+        <div class="tile-num">Lesson 45</div>
+        <div class="tile-title">The People of Madinah — Pledges of Aqabah</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+      <div class="tile" id="tile45" onclick="openLesson(45)">
+        <div class="tile-emoji">⚡</div>
+        <div class="tile-num">Lesson 46</div>
+        <div class="tile-title">The Plot to Kill the Prophet ﷺ</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+      <div class="tile" id="tile46" onclick="openLesson(46)">
+        <div class="tile-emoji">🛌</div>
+        <div class="tile-num">Lesson 47</div>
+        <div class="tile-title">Ali Sleeps in the Prophet's Bed</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+      <div class="tile" id="tile47" onclick="openLesson(47)">
+        <div class="tile-emoji">🕸️</div>
+        <div class="tile-num">Lesson 48</div>
+        <div class="tile-title">The Cave of Thawr — Three Days of Hiding</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+      <div class="tile" id="tile48" onclick="openLesson(48)">
+        <div class="tile-emoji">🍞</div>
+        <div class="tile-num">Lesson 49</div>
+        <div class="tile-title">Asma, Abdullah & the Journey North</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+      <div class="tile" id="tile49" onclick="openLesson(49)">
+        <div class="tile-emoji">🎉</div>
+        <div class="tile-num">Lesson 50</div>
+        <div class="tile-title">Welcome to Madinah!</div>
+        <div class="tile-unit-tag">Unit 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 11 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 11</span>
+      <span class="unit-name">Building Madinah</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile50" onclick="openLesson(50)">
+        <div class="tile-emoji">🧱</div>
+        <div class="tile-num">Lesson 51</div>
+        <div class="tile-title">Building Masjid An-Nabawi</div>
+        <div class="tile-unit-tag">Unit 11</div>
+      </div>
+      <div class="tile" id="tile51" onclick="openLesson(51)">
+        <div class="tile-emoji">🤲</div>
+        <div class="tile-num">Lesson 52</div>
+        <div class="tile-title">The Brotherhood — Muhajirun & Ansar</div>
+        <div class="tile-unit-tag">Unit 11</div>
+      </div>
+      <div class="tile" id="tile52" onclick="openLesson(52)">
+        <div class="tile-emoji">📣</div>
+        <div class="tile-num">Lesson 53</div>
+        <div class="tile-title">The Adhan — Bilal's Beautiful Call</div>
+        <div class="tile-unit-tag">Unit 11</div>
+      </div>
+      <div class="tile" id="tile53" onclick="openLesson(53)">
+        <div class="tile-emoji">💛</div>
+        <div class="tile-num">Lesson 54</div>
+        <div class="tile-title">Marriage to Aishah رضي الله عنها</div>
+        <div class="tile-unit-tag">Unit 11</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 12 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 12</span>
+      <span class="unit-name">The Battles</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile54" onclick="openLesson(54)">
+        <div class="tile-emoji">📖</div>
+        <div class="tile-num">Lesson 55</div>
+        <div class="tile-title">Why Did Battles Happen?</div>
+        <div class="tile-unit-tag">Unit 12</div>
+      </div>
+      <div class="tile" id="tile55" onclick="openLesson(55)">
+        <div class="tile-emoji">⚔️</div>
+        <div class="tile-num">Lesson 56</div>
+        <div class="tile-title">Battle of Badr — 313 vs. 1,000</div>
+        <div class="tile-unit-tag">Unit 12</div>
+      </div>
+      <div class="tile" id="tile56" onclick="openLesson(56)">
+        <div class="tile-emoji">⚔️</div>
+        <div class="tile-num">Lesson 57</div>
+        <div class="tile-title">Battle of Uhud — A Costly Lesson</div>
+        <div class="tile-unit-tag">Unit 12</div>
+      </div>
+      <div class="tile" id="tile57" onclick="openLesson(57)">
+        <div class="tile-emoji">🌊</div>
+        <div class="tile-num">Lesson 58</div>
+        <div class="tile-title">Battle of the Trench — The Clever Ditch</div>
+        <div class="tile-unit-tag">Unit 12</div>
+      </div>
+      <div class="tile" id="tile58" onclick="openLesson(58)">
+        <div class="tile-emoji">🕌</div>
+        <div class="tile-num">Lesson 59</div>
+        <div class="tile-title">Treaty of Hudaybiyyah — Peace as Victory</div>
+        <div class="tile-unit-tag">Unit 12</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 13 -->
+  <div class="unit-section">
+    <div class="unit-heading">
+      <span class="unit-num">Unit 13</span>
+      <span class="unit-name">Victory & Farewell</span>
+      <div class="unit-line"></div>
+    </div>
+    <div class="tile-grid">
+      <div class="tile" id="tile59" onclick="openLesson(59)">
+        <div class="tile-emoji">🏳️</div>
+        <div class="tile-num">Lesson 60</div>
+        <div class="tile-title">Conquest of Makkah — The Big Forgiveness</div>
+        <div class="tile-unit-tag">Unit 13</div>
+      </div>
+      <div class="tile" id="tile60" onclick="openLesson(60)">
+        <div class="tile-emoji">🕌</div>
+        <div class="tile-num">Lesson 61</div>
+        <div class="tile-title">The Farewell Pilgrimage</div>
+        <div class="tile-unit-tag">Unit 13</div>
+      </div>
+      <div class="tile" id="tile61" onclick="openLesson(61)">
+        <div class="tile-emoji">🌿</div>
+        <div class="tile-num">Lesson 62</div>
+        <div class="tile-title">The Prophet's Final Days</div>
+        <div class="tile-unit-tag">Unit 13</div>
+      </div>
+      <div class="tile" id="tile62" onclick="openLesson(62)">
+        <div class="tile-emoji">🌍</div>
+        <div class="tile-num">Lesson 63</div>
+        <div class="tile-title">His Legacy — He Lives in Our Hearts</div>
+        <div class="tile-unit-tag">Unit 13</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end homeScreen -->
+
+
+<!-- ════════════════════════════════════════════
+     LESSON SCREEN
+════════════════════════════════════════════ -->
+<div id="lessonScreen">
+
+  <div class="lesson-topbar">
+    <button class="back-btn" onclick="goHome()">
+      &#8592; All Lessons
+    </button>
+    <div class="topbar-info">
+      <div class="topbar-lesson-num" id="topbarNum">Lesson 1 of 63</div>
+      <div class="topbar-lesson-title" id="topbarTitle">Where Is Makkah?</div>
+    </div>
+    <div class="topbar-progress">
+      <div class="topbar-pbar"><div class="topbar-pfill" id="topbarFill" style="width:0%"></div></div>
+      <span class="topbar-pct" id="topbarPct">0%</span>
+    </div>
+  </div>
+
+  <div class="lesson-body" id="lessonBody">
+    <!-- Lesson content injected here -->
+  </div>
+
+</div><!-- end lessonScreen -->
+
+
+<!-- ════════════════════════════════════════════
+     ACTIVITY SCREEN
+════════════════════════════════════════════ -->
+<div id="activityScreen">
+  <div class="act-topbar">
+    <button class="back-btn" onclick="backToLesson()">← Back to Lesson</button>
+    <div class="act-topbar-info">
+      <div class="act-topbar-label" id="actTopbarLabel">Activities — Lesson 3</div>
+      <div class="act-topbar-title" id="actTopbarTitle">Activity 1 of 5</div>
+    </div>
+    <div class="act-progress-wrap" id="actPips"></div>
+  </div>
+  <div class="act-body" id="actBody"></div>
+</div><!-- end activityScreen -->
+
+
+<script>
+function toggleMecca(img) {
+  var expanded = img.getAttribute('data-expanded') === 'true';
+  img.style.width = expanded ? '120px' : '100%';
+  img.style.borderRadius = expanded ? '10px' : '14px';
+  img.setAttribute('data-expanded', expanded ? 'false' : 'true');
+}
+document.addEventListener('click', function(e) {
+  if (e.target.id !== 'meccaImg') {
+    var img = document.getElementById('meccaImg');
+    if (img && img.getAttribute('data-expanded') === 'true') toggleMecca(img);
+  }
+});
+
+var doneLessons = new Set();
+var TOTAL = 63;
+var currentLesson = 0;
+
+/* ─── LESSON DATA ─── */
+var LESSONS = [
+  /* 0 */ {
+    unit:"Unit 1 · Lesson 1", title:"Where Is Makkah?", loc:"Makkah, Arabian Peninsula (modern-day Saudi Arabia)",
+    html:`
+    <div class="block" style="text-align:center"><img src="images/mecca.png" alt="Makkah" id="meccaImg" onclick="toggleMecca(this)" style="width:120px;border-radius:10px;cursor:pointer;transition:width 0.3s ease,border-radius 0.3s ease;"></div>
+    <div class="prose block"><h3>🌍 A City in the Desert</h3>
+    <p>Makkah (also spelled Mecca) sits deep inside a hot, dry valley in what is today the country of <strong>Saudi Arabia</strong>, on the western side of the Arabian Peninsula. There is no river nearby, very little rain, and almost no farmland. If you visited, you might wonder: <em>Why would anyone want to live here?</em></p>
+    <p>The answer is surprising — Makkah became one of the most important cities on Earth, not because of its resources, but because of its <strong>spiritual meaning</strong>. At its heart stands a special building called <strong>the Ka'bah</strong>, which Muslims call <em>Baytullah</em> — the House of Allah on Earth.</p>
+    <p>And it is in this same city — Makkah — that the greatest prophet of all, <strong>Muhammad ﷺ</strong>, would one day be born. But first, let us understand how this special city came to be.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>Muslims around the world face toward the Ka'bah in Makkah five times a day when they pray — no matter where on Earth they are! It is the single direction of prayer for over a billion people.</div>`
+  },
+  /* 1 */ {
+    unit:"Unit 1 · Lesson 2", title:"Ibrahim ﷺ & the Desert Journey", loc:"The Empty Valley — Makkah",
+    html:`
+    <div class="prose block"><h3>🤲 A Test of Complete Trust</h3>
+    <p>About 4,000 years ago, a great prophet named <strong>Ibrahim ﷺ</strong> (Abraham) received a command from Allah that seemed almost impossible to follow. He was told to take his wife <strong>Hajar</strong> (Hagar) and their tiny baby boy <strong>Ismail ﷺ</strong> (Ishmael) to a completely empty, waterless valley in the middle of the Arabian desert — and <em>leave them there.</em></p>
+    <p>Ibrahim ﷺ trusted Allah completely. He made the long journey, left Hajar and baby Ismail with a small bag of food and a water-skin, and turned to walk away.</p></div>
+    <div class="prose block"><h3>💬 "Did Allah Command This?"</h3>
+    <p>Hajar ran after him: <em>"O Ibrahim! Where are you going? Are you leaving us here with no one?"</em> He kept walking. She called again: <em>"Did Allah order you to do this?"</em> He turned and replied simply: <strong>"Yes."</strong></p>
+    <p>At that moment Hajar's heart became completely calm. She said: <em>"Then Allah will not let us be lost."</em> She went back to her baby, trusting Allah fully.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 A Lesson for Us</span>When we know Allah has commanded something, we trust Him — even when we are afraid, even when we don't understand how it will work out. This trust is called <strong>Tawakkul</strong> — and it is one of the greatest qualities a believer can have.</div>`
+  },
+  /* 2 */ {
+    unit:"Unit 1 · Lesson 3", title:"Hajar's Search & the Zamzam Miracle", loc:"Makkah — The Valley",
+    activities: [
+      {
+        type: 'mcq',
+        question: 'How many times did Hajar run between As-Safa and Al-Marwa?',
+        options: ['3 times', '5 times', '7 times', '9 times'],
+        answer: 2
+      },
+      {
+        type: 'truefalse',
+        question: 'The well of Zamzam appeared before Hajar began running between the hills.',
+        answer: false
+      },
+      {
+        type: 'fillin',
+        question: 'The tribe that arrived after seeing birds circle above the water was called the ___.',
+        answer: 'Jurhum'
+      },
+      {
+        type: 'ordering',
+        question: 'Put these events from this lesson in the correct order:',
+        items: ['Food and water ran out', 'Hajar ran between Safa and Marwa', 'Zamzam spring burst from the ground', 'The Jurhum tribe arrived and settled']
+      },
+      {
+        type: 'reflection',
+        question: 'Hajar was alone in the desert with no food, no water, and a crying baby — yet she kept searching and trusting Allah. What does her story teach you about how to handle a difficult moment in your own life?'
+      }
+    ],
+    html:`
+    <div class="prose block"><h3>💧 Running Between Two Hills</h3>
+    <p>The food and water ran out. Baby Ismail cried from thirst. Hajar climbed a small hill called <strong>As-Safa</strong>, looked across the valley, saw nothing, then ran to the hill of <strong>Al-Marwa</strong>. Still nothing. Back and forth she ran — <strong>seven times</strong> — searching desperately for water or any passing traveller.</p>
+    <p>Today, millions of Muslims walk between As-Safa and Al-Marwa during Hajj and Umrah, following exactly in the footsteps of this brave, faithful mother.</p></div>
+    <div class="sai-box block">
+      <div class="sai-title">🏃 The Sa'i simulation — 7 Laps Between As-Safa & Al-Marwa</div>
+      <div class="sai-track-wrap">
+        <div class="sai-hills">
+          <div class="sai-hill">📍 As-Safa</div>
+          <div class="sai-hill">Al-Marwa 📍</div>
+        </div>
+        <div class="sai-track">
+          <div class="sai-figure" id="saiHajar" style="left:2%">🏃‍♀️</div>
+        </div>
+      </div>
+      <div class="sai-dots">
+        <div class="sai-dot active" id="saiDot0">1</div>
+        <div class="sai-dot" id="saiDot1">2</div>
+        <div class="sai-dot" id="saiDot2">3</div>
+        <div class="sai-dot" id="saiDot3">4</div>
+        <div class="sai-dot" id="saiDot4">5</div>
+        <div class="sai-dot" id="saiDot5">6</div>
+        <div class="sai-dot" id="saiDot6">7</div>
+      </div>
+      <div class="sai-status" id="saiStatus">Press <strong>Start</strong> to begin the Sa'i</div>
+      <div class="sai-controls">
+        <button class="sai-btn sai-btn-start" id="saiBtnStart" onclick="saiStart()">▶ Start</button>
+        <button class="sai-btn sai-btn-reset" onclick="saiReset()">↺ Reset</button>
+      </div>
+    </div>
+    <div class="prose block"><h3>🌊 A Spring Bursts From the Earth</h3>
+    <p>As Hajar searched, Angel <strong>Jibreel ﷺ</strong> struck the ground, and a spring of <strong>fresh water</strong> burst from the dry desert earth — right next to baby Ismail! This is the well of <strong>Zamzam</strong>. It has flowed continuously for over 4,000 years and its water is drunk by millions every single day.</p></div>
+    <div class="prose block"><h3>🐦 Birds & a Tribe Arrive</h3>
+    <p>Birds began circling because of the water. A tribe called the <strong>Jurhum</strong> spotted the birds, came to investigate, and asked Hajar's permission to settle nearby. She agreed — and the empty desert valley began to fill with people. This is how the city of Makkah was born.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>Zamzam water has been tested by scientists and found to have unique mineral properties. The Prophet ﷺ said: <em>"The best water on the face of the Earth is Zamzam water."</em> (At-Tabarani)</div>`
+  },
+  /* 3 */ {
+    unit:"Unit 1 · Lesson 4", title:"Building the Ka'bah", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🕋 Father and Son Build Together</h3>
+    <p>Ismail ﷺ grew up in Makkah, married a woman from the Jurhum tribe, and became a strong young man. One day, his father Ibrahim ﷺ returned. Allah commanded them both to build a house in this valley — a house purely for the worship of Allah alone.</p>
+    <p>Together, father and son built <strong>the Ka'bah</strong> — the cube-shaped structure that stands in the heart of Makkah to this very day. As they placed stone upon stone, they prayed:</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Baqarah (2:127–128)</span>"Our Lord, accept this from us. You are the All-Hearing, the All-Knowing. Our Lord, make us submit to You, and from our children a nation that submits to You. Show us the way of our worship and turn to us in mercy."</div>
+    <div class="prose block"><h3>🌍 A House for All of Humanity</h3>
+    <p>Ibrahim ﷺ called all of humanity — by Allah's command — to come and make pilgrimage to this house. People from every land began coming. The Prophet Muhammad ﷺ was a direct descendant of Ismail ﷺ, the son of Ibrahim ﷺ — the very family that built the Ka'bah and called the world to worship Allah.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Ibrahim (14:37)</span>Ibrahim ﷺ prayed: "Our Lord, I have settled some of my family in a valley with no crops, near Your sacred House, so that they may establish prayer. So make the hearts of people yearn towards them, and provide them with fruits, so they may be thankful."</div>`
+  },
+  /* 4 */ {
+    unit:"Unit 2 · Lesson 5", title:"His Parents: Abdullah & Aminah", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>👨 His Father: Abdullah ibn Abd al-Muttalib</h3>
+    <p>Muhammad's ﷺ father was <strong>Abdullah ibn Abd al-Muttalib</strong>. His grandfather <strong>Abd al-Muttalib</strong> was the respected chief of Makkah's powerful tribe, the <strong>Quraysh</strong>, from the noble clan of <strong>Banu Hashim</strong> — tracing its lineage all the way back to Ismail and Ibrahim ﷺ.</p>
+    <p>Abdullah was a handsome, well-regarded young man. Sadly, he passed away on a trading trip to Madinah (then called Yathrib) — while his wife Aminah was still expecting their baby. He was only about 25 years old. Muhammad ﷺ never saw his father.</p></div>
+    <div class="prose block"><h3>👩 His Mother: Aminah bint Wahb</h3>
+    <p>Muhammad's ﷺ mother was <strong>Aminah bint Wahb</strong>, a gentle and noble woman. She reported that while pregnant, she saw a light emerge from her that lit up the castles as far away as Syria — a sign of the greatness of the child within her.</p>
+    <p>When Muhammad ﷺ was about <strong>six years old</strong>, Aminah took him to Madinah to visit relatives and his father's grave. On the journey home, she fell gravely ill and passed away at a place called <strong>Al-Abwa</strong>, leaving her son an orphan for the second time.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Ad-Duha (93:6)</span>"Did He not find you an orphan and give shelter?" — Allah Himself mentions that He took care of the Prophet ﷺ. Being without parents does not mean Allah has forgotten you — He has a greater plan.</div>
+    <div class="gold-box block"><span class="lbl">🌟 He Never Forgot His Mother</span>Years later, the Prophet ﷺ visited his mother's grave and wept — tears running down his face — until those around him wept too. He had asked Allah's permission to seek forgiveness for her but was told he could not. He was given permission to visit her grave, and he did. He never forgot her kindness.</div>`
+  },
+  /* 5 */ {
+    unit:"Unit 2 · Lesson 6", title:"The Army of Elephants", loc:"Makkah, Arabian Peninsula — 570 CE",
+    html:`
+    <div class="prose block"><h3>🐘 A King Who Wanted to Destroy the Ka'bah</h3>
+    <p>In the same year Muhammad ﷺ was born, an extraordinary event shook all of Arabia. A powerful king named <strong>Abraha al-Ashram</strong> ruled in Yemen. He had built a magnificent church and wanted everyone to visit it instead of the Ka'bah. When people ignored his church, he gathered a massive army — thousands of soldiers — and brought enormous <strong>war elephants</strong>. The most famous was named <strong>Mahmud</strong>. His plan: march to Makkah and <em>destroy the Ka'bah.</em></p></div>
+    <div class="prose block"><h3>💬 Abd al-Muttalib's Famous Reply</h3>
+    <p>Abraha's men seized many Makkan camels. The Makkan chief <strong>Abd al-Muttalib</strong> came to demand them back. Abraha said: "I thought you would beg me to spare the Ka'bah!" Abd al-Muttalib replied with dignified calm: <em>"I am the owner of these camels. As for the Ka'bah — it has its own Lord, and He will protect it."</em></p></div>
+    <div class="prose block"><h3>🐦 The Birds of Allah</h3>
+    <p>The Makkans climbed the hills to watch helplessly. Abraha's army marched — and then from the sky came <strong>enormous flocks of birds</strong>, each carrying three stones. The stones fell on Abraha's soldiers like a devastating rain. The entire great army was destroyed. Abraha fled to Yemen and died. The Ka'bah was safe — protected by Allah alone, without any human army.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Feel (Chapter 105) — The full surah</span>"Have you not seen what your Lord did to the People of the Elephant? Did He not make their plan go wrong? And He sent against them birds in flocks, pelting them with stones of baked clay, and He made them like eaten straw."</div>`
+  },
+  /* 6 */ {
+    unit:"Unit 2 · Lesson 7", title:"Birth: The Year of the Elephant", loc:"Makkah, Arabian Peninsula — 570 CE",
+    html:`
+    <div class="prose block"><h3>⭐ Born Into a Remarkable Year</h3>
+    <p>It was in this same year — <strong>570 CE</strong> — known forever as <em>Aam al-Feel</em> (the Year of the Elephant) — that <strong>Muhammad ibn Abdullah ﷺ</strong> was born in Makkah. He was born on <strong>Monday, 12 Rabi' al-Awwal</strong> — the third month of the Islamic calendar.</p>
+    <p>His grandfather Abd al-Muttalib was overjoyed. He carried the baby to the Ka'bah, made du'a of gratitude, and gave him an unusual and beautiful name: <strong>Muhammad</strong> — meaning <em>"one who is praised."</em> It was a rare name, almost as if it had been waiting just for him.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 Born on a Monday</span>When asked why he fasted on Mondays, the Prophet ﷺ replied: <em>"That is the day I was born and the day Revelation first came to me."</em> (Muslim) Every Monday carries a special memory — the day the greatest human being entered this world.</div>
+    <div class="prose block"><h3>💡 Two Events — One Year</h3>
+    <p>In the very same year a mighty army tried to erase the Ka'bah — and was itself erased by Allah — Allah also placed into the world the man who would carry Islam to all of humanity. The year of the attempt to destroy the Ka'bah became the year of the birth of the one who would fill the world with the name of Allah. Only Allah plans like this.</p></div>`
+  },
+  /* 7 */ {
+    unit:"Unit 2 · Lesson 8", title:"Halimah & the Desert Years", loc:"Makkah & the Banu Sa'd Desert Tribe",
+    html:`
+    <div class="prose block"><h3>🌿 The Custom of Desert Nursing</h3>
+    <p>In those days, wealthy Makkan families would send their newborns to live with Bedouin (desert-dwelling) women for a few years. The fresh desert air was thought to build strength, and children would learn pure, eloquent Arabic. Baby Muhammad ﷺ was first briefly nursed by a woman named <strong>Thuwaybah</strong>, a servant of his uncle Abu Lahab. He honoured her with gifts for the rest of her life.</p></div>
+    <div class="prose block"><h3>🌸 Halimah Chooses the Orphan</h3>
+    <p>A woman named <strong>Halimah bint Abi Dhu'ayb As-Sa'diyyah</strong>, from the tribe of Banu Sa'd, came to Makkah looking for a baby to nurse. Everyone had already chosen — no one wanted the orphan boy, fearing little payment. Halimah, rather than return empty-handed, took him. And from that moment, blessings poured into her life:</p>
+    <div class="badges"><span class="badge">🥛 Her milk, once scarce, now flowed abundantly</span><span class="badge">🐪 Her slow old donkey now led the whole group</span><span class="badge">🐑 Her flock gave far more milk than before</span></div>
+    <p>People from her tribe said: <em>"Halimah! You have been given a truly blessed child."</em></p></div>
+    <div class="gold-box block"><span class="lbl">🌟 A Lesson in Choosing Goodness</span>Halimah chose the child no one else wanted — and was rewarded with blessings beyond what she imagined. When we help those who seem to have less, Allah often blesses us in ways we never expected!</div>`
+  },
+  /* 8 */ {
+    unit:"Unit 2 · Lesson 9", title:"The Opening of the Chest", loc:"Desert of Banu Sa'd",
+    html:`
+    <div class="prose block"><h3>👼 An Extraordinary Event</h3>
+    <p>While young Muhammad ﷺ lived with Halimah — around age four or five — he was playing with other children one day when something extraordinary happened. Two men in brilliant white appeared and gently laid him down. The other children ran frightened to Halimah, crying that their brother was hurt.</p>
+    <p>Halimah rushed out and found Muhammad ﷺ standing calm and unharmed — his face brighter and more peaceful than ever. He described what had happened: the two men (Angels) had opened his chest, removed his heart, taken from it something dark, washed his heart with Zamzam water, placed it back, and closed his chest.</p>
+    <p>This event is called <strong>Sharh As-Sadr</strong> — the Opening of the Chest — and it happened more than once in his life. It was Allah purifying his heart completely, preparing it to carry the greatest message ever sent to humankind.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Ash-Sharh (94:1)</span>"Did We not expand your chest for you?" — Allah asks the Prophet ﷺ this question, reminding him of this purification and the ease it brought to his heart.</div>
+    <div class="prose block"><h3>🏠 Returned Early</h3>
+    <p>After this incident, Halimah became nervous and returned Muhammad ﷺ to his mother Aminah in Makkah earlier than planned. She worried something dangerous was near the boy — though in reality, what was near him was only divine blessing and preparation for the greatest mission in history.</p></div>`
+  },
+  /* 9 */ {
+    unit:"Unit 2 · Lesson 10", title:"Returned to Mother — Then Orphaned Again", loc:"Makkah & Al-Abwa",
+    html:`
+    <div class="prose block"><h3>🏡 A Journey to Madinah</h3>
+    <p>Reunited with his mother Aminah, young Muhammad ﷺ was about five or six years old. Aminah decided to take him to <strong>Madinah (Yathrib)</strong> to visit relatives and the grave of his father Abdullah. They travelled with the loyal servant woman <strong>Umm Ayman (Barakah)</strong> — who had served the family since the time of Abdullah.</p>
+    <p>On the long road home, Aminah fell gravely ill. She passed away at a place called <strong>Al-Abwa</strong>, far from home, leaving six-year-old Muhammad ﷺ an orphan without either parent.</p></div>
+    <div class="prose block"><h3>🕊️ Umm Ayman — His Second Mother</h3>
+    <p>The faithful Umm Ayman looked after the grieving boy and brought him safely back to Makkah. The Prophet ﷺ never forgot her. He called her <em>"my mother after my mother,"</em> visited her throughout his life, and declared her a <strong>woman of Paradise</strong>. When she wept on the day he ﷺ passed away, companions asked why. She said: <em>"I weep because the revelation from heaven has been cut off from us."</em></p></div>
+    <div class="gold-box block"><span class="lbl">🌟 His Three Mothers</span>The Prophet ﷺ had three women who mothered him: <strong>Aminah</strong> (his birth mother), <strong>Halimah</strong> (his nursing mother in the desert), and <strong>Umm Ayman</strong> (his loyal carer). Each one plays a beautiful role in his early story — and he honoured all of them deeply.</div>`
+  },
+  /* 10 */ {
+    unit:"Unit 2 · Lesson 11", title:"With Grandfather Abd al-Muttalib", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>👴 The Chief's Special Love</h3>
+    <p>After losing his mother, Muhammad ﷺ went to live with his grandfather, <strong>Abd al-Muttalib</strong> — the great chief of Makkah and head of the Banu Hashim clan. Despite being one of the most important men in the city, Abd al-Muttalib kept his young grandson very close to him at all times.</p>
+    <p>A special mat was always laid for Abd al-Muttalib near the Ka'bah where no one sat until he arrived. But little Muhammad ﷺ would come and sit on it. The attendants would try to move him away, and Abd al-Muttalib would say: <em>"Leave my son! By Allah, he will have great importance one day."</em> He would seat Muhammad ﷺ beside him and stroke his back with love.</p></div>
+    <div class="prose block"><h3>😢 Another Loss — A New Guardian</h3>
+    <p>When Muhammad ﷺ was about <strong>eight years old</strong>, Abd al-Muttalib passed away. Before dying, he called his son <strong>Abu Talib</strong> and asked him to take care of Muhammad ﷺ. Abu Talib gave his word and kept it faithfully for many decades.</p></div>
+    <div class="purple-box block"><span class="lbl">Think about it</span>By age eight, Muhammad ﷺ had lost his father (before birth), his mother, and his grandfather. Each time, Allah placed someone new in his life to care for him. Allah's plan was always at work — even through the sadness.</div>`
+  },
+  /* 11 */ {
+    unit:"Unit 3 · Lesson 12", title:"With Uncle Abu Talib", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🧑‍🤝‍🧑 A True Guardian</h3>
+    <p><strong>Abu Talib ibn Abd al-Muttalib</strong> was Muhammad's ﷺ uncle and a respected poet and leader in Makkah. Despite having many children of his own, he welcomed Muhammad ﷺ into his home and raised him like his own son — with genuine love and fierce loyalty.</p>
+    <p>It is said that Abu Talib kept Muhammad ﷺ especially close — eating with him, taking him on trips, watching over him with tenderness that went beyond duty. The bond between them was one of the most moving in all of the Seerah.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 A Note on Abu Talib</span>Abu Talib protected the Prophet ﷺ all his life and clearly admired him deeply. Yet he did not accept Islam before he died — he stayed on the way of his ancestors. This was a deep sorrow for the Prophet ﷺ. But it teaches us something important: guidance (hidayah) comes only from Allah. We can love someone completely and make du'a for them constantly — and still know that only Allah opens hearts.</div>`
+  },
+  /* 12 */ {
+    unit:"Unit 3 · Lesson 13", title:"The Monk Bahirah's Recognition", loc:"Busra, Greater Syria (on the trading road)",
+    html:`
+    <div class="prose block"><h3>🐪 A Journey With Uncle</h3>
+    <p>When Muhammad ﷺ was about <strong>twelve years old</strong>, his uncle Abu Talib took him on a trading journey to <strong>Syria (Ash-Sham)</strong>. Along the route they passed through the town of <strong>Busra</strong>, where a learned Christian monk named <strong>Bahirah</strong> lived.</p>
+    <p>Bahirah had never come out to greet passing caravans before. But this time was different. He saw the caravan and noticed something: a <em>cloud</em> was moving through the clear sky to shade one particular person. As that person walked, the trees around the road seemed to tilt their branches to give shade.</p></div>
+    <div class="prose block"><h3>📜 The Signs in the Old Books</h3>
+    <p>Bahirah rushed out, invited the whole caravan to eat, and kept studying young Muhammad ﷺ. He examined him closely, looking for a mark described in his ancient scriptures. He found it: the <strong>Seal of Prophethood</strong> — a small mark between the Prophet's shoulder blades.</p>
+    <p>He turned to Abu Talib seriously: <em>"This boy will be a great prophet. Take him home and protect him. Do not let enemies find him."</em> Abu Talib took heed, cut the trip short, and returned home keeping his nephew safe.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>The coming of Prophet Muhammad ﷺ was described in earlier scriptures. The Quran confirms: <em>"Those who follow the Messenger, the unlettered Prophet, whom they find written in the Torah and the Gospel."</em> (Surah Al-A'raf: 157)</div>`
+  },
+  /* 13 */ {
+    unit:"Unit 3 · Lesson 14", title:"Al-Amin & As-Sadiq — His Nicknames", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>⭐ A Reputation Built Honestly</h3>
+    <p>As Muhammad ﷺ grew into a young man, everyone in Makkah noticed something remarkable: he had <em>never told a single lie.</em> Not a small one. Not a convenient one. He was always fair, always honest, always kept his word. The people of Makkah gave him two lasting nicknames:</p>
+    <div class="badges"><span class="badge">⭐ Al-Amin — The Trustworthy One</span><span class="badge">✅ As-Sadiq — The Truthful One</span></div>
+    <p>These were not empty titles. People would actually leave their gold, silver, and valuables with him for safekeeping — trusting that he would never touch or misuse them. Even his worst enemies — those who later fought against Islam — still trusted him with their belongings.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 What This Teaches Us</span>A person's true reputation is built slowly, through small honest choices made every day. The Prophet ﷺ didn't become "Al-Amin" overnight — he earned that name over years of choosing truth, even when it was difficult. <strong>Honesty is always worth it.</strong></div>`
+  },
+  /* 14 */ {
+    unit:"Unit 3 · Lesson 15", title:"The Black Stone — His Wisdom", loc:"Makkah — Near the Ka'bah",
+    html:`
+    <div class="prose block"><h3>🕋 A Flood and a Dispute</h3>
+    <p>When Muhammad ﷺ was about <strong>35 years old</strong>, a great flood damaged the walls of the Ka'bah. The people of Makkah came together to rebuild it. But when the time came to place the special <strong>Black Stone (Al-Hajar Al-Aswad)</strong> back in its corner, every tribe wanted the honour. The argument grew dangerous — men reached for weapons. A war was about to break out over a stone, inside the very house built for worship of Allah.</p></div>
+    <div class="prose block"><h3>🤝 A Perfect Solution</h3>
+    <p>A wise elder suggested: <em>"Let whoever walks through the gate first tomorrow morning be our judge."</em> The next morning — it was <strong>Muhammad ﷺ</strong>! Everyone rejoiced: <em>"Al-Amin! We are all happy with him!"</em></p>
+    <p>Muhammad ﷺ asked for a large cloth. He placed the Black Stone in its centre. Then he asked one elder from <em>each tribe</em> to hold a corner and lift it together — every tribe shared the honour. When the stone reached the right height, Muhammad ﷺ placed it gently into position with his own hands. A war was avoided. Everyone was honoured. This is the wisdom of Al-Amin.</p></div>`
+  },
+  /* 15 */ {
+    unit:"Unit 3 · Lesson 16", title:"His Work: Shepherd & Trader", loc:"Makkah & Trading Routes to Syria and Yemen",
+    html:`
+    <div class="prose block"><h3>🐑 A Shepherd First</h3>
+    <p>As a young man, Muhammad ﷺ worked as a <strong>shepherd</strong> — watching over the sheep and goats of families in Makkah. This job requires patience, responsibility, gentle authority, and constant watchfulness. The Prophet ﷺ said later: <em>"Every prophet was sent as a shepherd."</em> (Bukhari) The quiet desert hours gave him time to reflect deeply and develop the patience that would serve him through decades of difficulty.</p></div>
+    <div class="prose block"><h3>🐪 A Trusted Trader</h3>
+    <p>As he grew older, Muhammad ﷺ became an outstanding <strong>trader</strong>, joining caravans heading to Syria and Yemen. Because everyone knew him as Al-Amin, people trusted him with their wealth to trade on their behalf. He always returned with honest profit, never cheating anyone. His reputation grew across the trading world of Arabia.</p></div>`
+  },
+  /* 16 */ {
+    unit:"Unit 3 · Lesson 17", title:"Hilf al-Fudul — The Pact of Justice", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>⚖️ Standing Up for the Wronged</h3>
+    <p>As a young man, Muhammad ﷺ took part in a noble agreement known as <strong>Hilf al-Fudul</strong> — the Pact of the Virtuous. A merchant from outside Makkah had been cheated by a powerful Makkan, and no one would help him. A group of fair-minded men pledged: <em>they would always stand up for the rights of anyone treated unjustly in Makkah — whether local or visitor, rich or poor.</em></p></div>
+    <div class="prose block"><h3>💛 He Remembered It His Whole Life</h3>
+    <p>Years later — as a Prophet — he said: <em>"I witnessed a pledge in the house of Abdullah ibn Jud'an that I would not exchange for red camels (something very precious). If I were invited to something like it in Islam, I would respond."</em> Justice was in his nature long before he was a Prophet — and Islam only deepened it.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 Justice Is for Everyone</span>Even before revelation came, the Prophet ﷺ was drawn to fairness and standing up for the powerless. This is a core value of Islam: speak up for those who cannot speak for themselves.</div>`
+  },
+  /* 17 */ {
+    unit:"Unit 4 · Lesson 18", title:"Khadijah رضي الله عنها — The Businesswoman of Makkah", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>💼 A Woman of Rank and Wisdom</h3>
+    <p><strong>Khadijah bint Khuwaylid</strong> رضي الله عنها was one of the most admired women in all of Makkah. She was from a noble family, ran successful trading caravans to Syria and Yemen, and managed her own business with skill and intelligence. She was known for her good character, sharp mind, and generous heart. She had been married twice before and was now a widow — independent, respected, and sought-after.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 A Pioneer Woman</span>Khadijah رضي الله عنها ran her own business, made her own decisions, and would propose marriage herself — showing intelligence and courage. She became the first person to accept Islam and is described by the Prophet ﷺ as one of the four greatest women who ever lived. Islam honours women of intelligence, capability, and faith.</div>`
+  },
+  /* 18 */ {
+    unit:"Unit 4 · Lesson 19", title:"The Trade Journey to Syria", loc:"Makkah to Syria (Ash-Sham)",
+    html:`
+    <div class="prose block"><h3>🐪 Setting Off for Syria</h3>
+    <p>Khadijah رضي الله عنها hired Muhammad ﷺ to take her trading goods to Syria, offering him better pay than anyone else — because of his reputation as Al-Amin. He set out with her servant <strong>Maysarah</strong>. The trip was a tremendous success — Muhammad ﷺ returned with more profit than any previous journey.</p></div>
+    <div class="prose block"><h3>🌤️ What Maysarah Witnessed</h3>
+    <p>Maysarah had seen something amazing on the road: during hot midday rests, a <em>cloud</em> would appear from a clear sky and move specifically to shade Muhammad ﷺ. And a monk they met pointed at him and told Maysarah: <em>"No one rests under this tree except a Prophet."</em></p>
+    <p>When Maysarah returned and shared these observations with Khadijah رضي الله عنها — combined with what she already knew of his character — something became clear in her heart.</p></div>`
+  },
+  /* 19 */ {
+    unit:"Unit 4 · Lesson 20", title:"Khadijah Proposes — They Marry", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>💍 She Makes the Move</h3>
+    <p>Khadijah رضي الله عنها sent a trusted friend named <strong>Nafisah bint Munyah</strong> to ask Muhammad ﷺ a delicate question: would he consider marrying Khadijah? Muhammad ﷺ was pleased. He spoke with Abu Talib, who agreed gladly. A formal proposal was made, Abu Talib gave a speech of praise for his nephew, and the marriage contract was completed.</p>
+    <p>Khadijah was about <strong>40 years old</strong> and Muhammad ﷺ was about <strong>25 years old</strong>. Their marriage became one of the most beautiful in all of Islamic history — built on deep mutual respect, love, and spiritual partnership.</p></div>
+    <div class="prose block"><h3>💛 Twenty-Five Years of Devotion</h3>
+    <p>For <strong>25 years</strong>, until Khadijah passed away, Muhammad ﷺ was devoted to her alone — never taking another wife while she lived. She was his home, his comfort, his greatest supporter. He said of her: <em>"She believed in me when no one else did. She accepted me when people rejected me. She helped me with her wealth when everyone withheld from me. And Allah blessed me with children through her."</em> (Ahmad)</p></div>`
+  },
+  /* 20 */ {
+    unit:"Unit 4 · Lesson 21", title:"His Children", loc:"Makkah & Madinah",
+    html:`
+    <div class="prose block"><h3>👶 Children With Khadijah رضي الله عنها</h3>
+    <p>Muhammad ﷺ and Khadijah were blessed with <strong>six children</strong>:</p></div>
+    <div class="gold-box block"><span class="lbl">Sons (both passed away in infancy)</span><strong>Al-Qasim</strong> — He passed away young. The Prophet ﷺ was often called <em>Abu al-Qasim</em> in his memory.<br><br><strong>Abdullah</strong> — Also called At-Tayyib (the Good) and At-Tahir (the Pure). He also passed away in infancy.</div>
+    <div class="gold-box block"><span class="lbl">Daughters (all four lived to adulthood)</span><strong>Zaynab رضي الله عنها</strong> — The eldest daughter.<br><br><strong>Ruqayyah رضي الله عنها</strong> — Who married Uthman ibn Affan رضي الله عنه.<br><br><strong>Umm Kulthum رضي الله عنها</strong> — Who also later married Uthman after Ruqayyah passed away (earning him the name <em>Dhun-Noorayn</em> — Man of Two Lights).<br><br><strong>Fatimah رضي الله عنها</strong> — The youngest and most beloved. He called her <em>"the mother of her father."</em> She married Ali ibn Abi Talib رضي الله عنه.</div>
+    <div class="prose block"><h3>👦 Ibrahim — His Son in Madinah</h3>
+    <p>Years later in Madinah, a woman named <strong>Mariyah al-Qibtiyyah رضي الله عنها</strong> from Egypt became part of his household. She accepted Islam and gave birth to a son whom the Prophet ﷺ named <strong>Ibrahim</strong> — after his great ancestor Ibrahim ﷺ.</p>
+    <p>He loved little Ibrahim deeply. Sadly, Ibrahim passed away at about 16–18 months old. That day there happened to be a solar eclipse. People said: "The sun eclipsed for Ibrahim!" The Prophet ﷺ immediately corrected them: <em>"The sun and moon do not eclipse for anyone's birth or death. They are signs of Allah — when you see them, make salah."</em> (Bukhari)</p></div>`
+  },
+  /* 21 */ {
+    unit:"Unit 5 · Lesson 22", title:"The Cave of Hira", loc:"Jabal An-Nur (Mountain of Light), Makkah",
+    html:`
+    <div class="prose block"><h3>🏔️ A Man Searching for Truth</h3>
+    <p>As Muhammad ﷺ approached his fortieth year, he began spending more and more time away from the noise and idol worship of Makkah. He climbed alone to a small cave at the top of a mountain outside the city — now known as <strong>Jabal An-Nur</strong> (the Mountain of Light).</p>
+    <p>The cave, called <strong>Ghar Hira</strong>, is barely large enough for one person to sit comfortably. But it offered something precious: <em>silence and solitude.</em> There, Muhammad ﷺ would sit for days at a time — praying, thinking, worshipping the One Allah he had always believed in, and reflecting on creation and its purpose.</p>
+    <p>Khadijah رضي الله عنها would send food and water up to him. He was searching — his heart longed for something his people did not have. He was ready. And the answer was coming.</p></div>
+    <div class="purple-box block"><span class="lbl">A Moment to Think</span>The Prophet ﷺ was 40 years old when revelation came to him — not 20 or 25. Forty years of a life lived honestly, generously, and thoughtfully, before the greatest responsibility in human history was placed on his shoulders. Preparation matters.</div>`
+  },
+  /* 22 */ {
+    unit:"Unit 5 · Lesson 23", title:"The First Revelation — Jibreel ﷺ Appears", loc:"Cave of Hira, Makkah — Ramadan, 610 CE",
+    html:`
+    <div class="prose block"><h3>📖 The Night That Changed History</h3>
+    <p>It was the month of <strong>Ramadan</strong>, 610 CE. Muhammad ﷺ was <strong>40 years old</strong>, alone in the cave of Hira, when <strong>Angel Jibreel ﷺ</strong> — the greatest of angels, the Angel of Revelation — appeared to him.</p>
+    <p>Jibreel ﷺ embraced him tightly until Muhammad ﷺ felt his breath almost leave him. Then he released him and said one word:</p>
+    <p style="font-size:20px;font-weight:700;text-align:center;color:var(--green-dark);padding:0.5rem 0;">"اقْرَأْ — Iqra! — Read!"</p>
+    <p>"I cannot read," Muhammad ﷺ replied — he had never learned to read or write. A second embrace, even tighter. <em>"Read!"</em> Again: "I cannot read." A third embrace. Released. Then came the very first words of the Quran ever revealed:</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Alaq (96:1–5) — The First Revelation in history</span>"Read! In the name of your Lord who created — created man from a clinging substance. Read! And your Lord is the Most Generous — who taught by the pen — taught man what he did not know."</div>
+    <div class="prose block"><h3>🏃 Running Home Trembling</h3>
+    <p>Muhammad ﷺ left the cave shaking, his heart pounding. He rushed home to Khadijah and said: <strong><em>"Zammiluni! Zammiluni!"</em></strong> — <em>"Cover me! Cover me!"</em> She wrapped him in a cloak immediately — calm, steady, present.</p></div>`
+  },
+  /* 23 */ {
+    unit:"Unit 5 · Lesson 24", title:"Khadijah Comforts Him & Waraqah's Words", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>💛 Words That Changed Everything</h3>
+    <p>Once calm enough to speak, Muhammad ﷺ told Khadijah everything. He said: <em>"I feared for myself."</em> Khadijah did not panic. She did not doubt. She spoke words that are among the most beautiful ever recorded:</p></div>
+    <div class="gold-box block"><span class="lbl">💛 Khadijah's Reply</span>"Never! By Allah, Allah will never embarrass you! You keep your family ties. You speak the truth. You carry the burdens of others. You earn for the poor. You are generous to your guests. You help those in distress. Allah will never let anything bad happen to you!"</div>
+    <div class="prose block"><h3>📜 Waraqah Recognises the Sign</h3>
+    <p>Khadijah took Muhammad ﷺ to visit her elderly, now-blind cousin <strong>Waraqah ibn Nawfal</strong>, a scholar who had devoted his life to studying old Christian and Jewish scriptures. He knew the signs of prophethood well.</p>
+    <p>Muhammad ﷺ told him what had happened. Waraqah immediately recognised it: <em>"That is An-Namus — the same Angel who came to Prophet Musa! Oh how I wish I were young! How I wish I would be alive when your people drive you out!"</em></p>
+    <p>"Will they drive me out?!" Muhammad ﷺ asked. <em>"Yes — no man ever came with what you have brought without his people treating him with enmity. If I live to see your day, I will support you with all my strength."</em></p>
+    <p>Waraqah passed away shortly after — very old and weak. But his recognition gave the Prophet ﷺ assurance: this was real. This was from Allah. The mission had truly begun.</p></div>`
+  },
+  /* 24 */ {
+    unit:"Unit 5 · Lesson 25", title:"Islam in Secret — Dar al-Arqam", loc:"Makkah — House of Al-Arqam ibn Abi al-Arqam",
+    html:`
+    <div class="prose block"><h3>🤫 Three Years of Quiet Growth</h3>
+    <p>After revelation began, Allah commanded the Prophet ﷺ to call people to Islam quietly — one by one, in private. For the first <strong>three years</strong>, Islam spread in secret. The Prophet ﷺ spoke only to those he trusted most, people whose hearts seemed open and ready.</p></div>
+    <div class="prose block"><h3>🏠 The First Meeting Place</h3>
+    <p>There was a special house in Makkah where the early Muslims would gather secretly to pray, learn, and support one another. It belonged to a companion named <strong>Al-Arqam ibn Abi al-Arqam رضي الله عنه</strong> — located on the slope of a hill near the Ka'bah. This house became known as <strong>Dar al-Arqam</strong> — Islam's very first community centre and school.</p>
+    <p>Here, in this modest home, the early Muslims sat together to receive new Quranic verses. Here they prayed together for the first time. Here they learned what it meant to be Muslim. A small, quiet beginning — but the greatest of beginnings.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>Dar al-Arqam is sometimes called the first Islamic school in history — where the Prophet ﷺ himself was the teacher, and the companions were the students, learning directly from the one whom Allah had chosen.</div>`
+  },
+  /* 25 */ {
+    unit:"Unit 5 · Lesson 26", title:"The First Muslims", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🌱 The Forerunners</h3>
+    <p>The very first people to accept Islam were the <strong>As-Sabiqun al-Awwalun</strong> — the Forerunners. They chose Islam when it had nothing to offer in worldly terms — no power, no protection, no wealth. They believed purely because their hearts recognised truth.</p>
+    <div class="badges">
+      <span class="badge">🌹 Khadijah رضي الله عنها — First of all people; first woman</span>
+      <span class="badge">🕊️ Ali ibn Abi Talib رضي الله عنه — First boy (~10 yrs, living in Prophet's home)</span>
+      <span class="badge">⭐ Abu Bakr As-Siddiq رضي الله عنه — First free adult man</span>
+      <span class="badge">📖 Zayd ibn Harithah رضي الله عنه — Freed servant, among the earliest</span>
+      <span class="badge">🌟 Uthman ibn Affan رضي الله عنه</span>
+      <span class="badge">🌟 Az-Zubayr ibn al-Awwam رضي الله عنه</span>
+      <span class="badge">🌟 Abd ar-Rahman ibn Awf رضي الله عنه</span>
+      <span class="badge">🌟 Sa'd ibn Abi Waqqas رضي الله عنه</span>
+      <span class="badge">🌟 Talhah ibn Ubaydullah رضي الله عنه</span>
+    </div></div>
+    <div class="gold-box block"><span class="lbl">🌟 The Honour of Being First</span>The Prophet ﷺ said: "The best of my nation are my generation." (Bukhari) Those who believed at the very beginning — without any worldly proof, risking everything — carry a rank above all others who came after. They are the gold standard of faith.</div>`
+  },
+  /* 26 */ {
+    unit:"Unit 5 · Lesson 27", title:"Abu Bakr Accepts Islam", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>⭐ No Hesitation at All</h3>
+    <p><strong>Abu Bakr ibn Abi Quhafah</strong> رضي الله عنه was already one of Muhammad's ﷺ closest and most trusted friends — thoughtful, generous, widely respected in Makkah. When the Prophet ﷺ told him privately about the revelation, Abu Bakr did not ask for signs, did not debate, did not go away to think. He said immediately: <strong>"I believe you, and I believe in this."</strong></p>
+    <p>The Prophet ﷺ later said: <em>"I never invited anyone to Islam who hesitated for even a moment, except Abu Bakr — when I told him, he did not hesitate at all."</em></p></div>
+    <div class="prose block"><h3>🌊 A Ripple of Belief</h3>
+    <p>Abu Bakr رضي الله عنه then quietly called his own trusted friends, and through his efforts alone, some of the greatest names in Islam accepted the faith in those early days — including Uthman, Zubayr, Abd ar-Rahman ibn Awf, Sa'd, and Talhah.</p>
+    <p>His nickname — <strong>As-Siddiq</strong> (The Great Affirmer of Truth) — was given because of his instant, complete, unquestioning belief. The Prophet ﷺ said: <em>"If the faith of all of humanity were placed on one side of a scale, and the faith of Abu Bakr on the other — Abu Bakr's faith would outweigh theirs."</em></p></div>`
+  },
+  /* 27 */ {
+    unit:"Unit 6 · Lesson 28", title:"Calling Openly from As-Safa", loc:"Makkah — The Hill of As-Safa",
+    html:`
+    <div class="prose block"><h3>📢 The Command to Go Public</h3>
+    <p>After three years of private calling, Allah sent the command: <em>"So proclaim openly what you are commanded."</em> (Surah Al-Hijr: 94) The Prophet ﷺ climbed to the top of <strong>As-Safa</strong> — a small hill near the Ka'bah — and called out the cry used in Arabia to warn of danger: <em>"Ya Sabahah!"</em></p>
+    <p>All the clans of Makkah gathered quickly. He asked: <em>"O people — if I told you there was an army behind this mountain about to attack you — would you believe me?"</em> They all said: "Yes! We have never heard you lie!" He said: <strong><em>"Then I am warning you of a severe punishment that is coming. Say 'La ilaha illallah' and you will succeed."</em></strong></p></div>
+    <div class="prose block"><h3>😮 Mixed Reactions</h3>
+    <p>Some were silent and thoughtful. Others were confused. And one man — the Prophet's ﷺ own uncle — exploded in anger. The crowd dispersed. But the words of the Prophet ﷺ stayed with many of them, turning slowly in their minds.</p></div>`
+  },
+  /* 28 */ {
+    unit:"Unit 6 · Lesson 29", title:"Abu Lahab & Surah Al-Masad", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>😠 An Uncle Who Chose Hatred</h3>
+    <p>On the hill of As-Safa, the Prophet's ﷺ uncle <strong>Abu Lahab</strong> (Abd al-Uzza ibn Abd al-Muttalib) jumped up, red-faced with rage, and shouted: <em>"Tabban lak! — May you be ruined! Is THIS why you gathered us?!"</em></p>
+    <p>Abu Lahab and his wife <strong>Umm Jamil</strong> became two of the most spiteful enemies the Prophet ﷺ had. Umm Jamil would even go out at night and place bundles of thorns on the paths the Prophet ﷺ walked — trying to injure his feet.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Masad (Chapter 111) — Revealed about Abu Lahab</span>"May the hands of Abu Lahab be ruined, and ruined is he. His wealth and what he gained will not protect him. He will burn in a flaming fire — and his wife too, the carrier of firewood. Around her neck is a rope of palm fiber."</div>
+    <div class="prose block"><h3>🔮 A Proof of the Quran's Truth</h3>
+    <p>This surah was revealed while Abu Lahab was still alive and fully capable of accepting Islam. Had he converted, one might say he did it to prove the Quran wrong. But the Quran declared — while he still lived — that he would <em>never</em> become a Muslim and would go to the Fire. And so it happened. This chapter itself is a sign of the Quran's divine origin.</p></div>`
+  },
+  /* 29 */ {
+    unit:"Unit 6 · Lesson 30", title:"The Deal Offer — Surah Al-Kafirun", loc:"Makkah — Near the Ka'bah",
+    html:`
+    <div class="prose block"><h3>🤝 A Clever But Impossible Offer</h3>
+    <p>The leaders of Quraysh tried many things to stop the Prophet ﷺ. When insults and threats didn't work, some of them came with what seemed like a clever compromise. They said something like: <em>"O Muhammad, let's make a deal. You worship our gods for one year — just one year — and we will worship your God for one year. We all try each other's religion. If yours is better, we'll keep it."</em></p>
+    <p>They thought this was reasonable. But to the Prophet ﷺ, it was impossible. There is no "trying out" another god. There is no halfway between Tawheed (Allah's Oneness) and shirk (worshipping others alongside Allah).</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Kafirun (Chapter 109) — Revealed in response</span>"Say: O disbelievers! I do not worship what you worship. Nor do you worship what I worship. Nor will I worship what you worship. Nor will you worship what I worship. For you is your religion, and for me is my religion."</div>
+    <div class="prose block"><h3>💡 Clear, Respectful, and Final</h3>
+    <p>This surah does not insult the disbelievers — it does not threaten them. It simply states the truth with absolute clarity: <em>there will be no compromise on the worship of Allah alone.</em> The Prophet ﷺ called it "a quarter of the Quran" because of the depth of its meaning, and he recited it often in prayer.</p></div>`
+  },
+  /* 30 */ {
+    unit:"Unit 6 · Lesson 31", title:"Umar's Journey to Islam", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🗡️ A Man Who Set Out to Kill</h3>
+    <p><strong>Umar ibn al-Khattab</strong> was one of the most feared men in Makkah — powerful, fierce, and openly hostile to Islam. One day he strapped on his sword with one purpose: to find and kill Muhammad ﷺ and end what he saw as a threat to his people's way of life.</p>
+    <p>On his way, he met someone who told him: <em>"Before you go looking for Muhammad, deal with your own household — your sister Fatimah and her husband Sa'id have become Muslims."</em> Umar's fury shifted direction. He stormed to his sister's home.</p></div>
+    <div class="prose block"><h3>📖 Stopped by the Quran</h3>
+    <p>He found his sister <strong>Fatimah bint al-Khattab</strong> and her husband <strong>Sa'id ibn Zayd رضي الله عنهما</strong> with a companion named <strong>Khabbab رضي الله عنه</strong>, who was teaching them Quran. Umar struck his brother-in-law. His sister rushed to protect her husband and Umar struck her too, cutting her face.</p>
+    <p>But Fatimah stood firm, her face bleeding: <em>"Do what you want, Umar! We will not leave Islam."</em> Something in Umar paused. He asked quietly: <em>"Show me what you were reading."</em> She handed him pages of <strong>Surah Ta-Ha</strong>. Umar sat down and read. The words entered his chest like nothing he had ever felt before.</p></div>
+    <div class="prose block"><h3>🌟 Going to the Prophet ﷺ</h3>
+    <p>Narrations also mention that on a previous occasion, Umar had once passed by the Ka'bah and heard the Prophet ﷺ reciting Quran in prayer — and those words had already entered his heart, though he tried to push them away. The Quran had been working on him.</p>
+    <p>Now, with his sister's blood on his hands and those divine words in his heart, he went directly to <strong>Dar al-Arqam</strong> — still carrying his sword — and knocked. The companions inside were frightened. But the Prophet ﷺ himself opened the door, took Umar by his collar firmly, and asked: <em>"What has brought you, O son of al-Khattab?"</em></p>
+    <p>Umar replied: <em>"O Messenger of Allah, I have come to believe in Allah and His messenger and in what he brought from Allah."</em> The companions inside called out: <strong>"Allahu Akbar!"</strong> — so loud the streets of Makkah heard it.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 The Impact of Umar's Conversion</span>The Prophet ﷺ had made du'a: <em>"O Allah, strengthen Islam with whichever of the two Umars is more beloved to You."</em> Allah chose Umar ibn al-Khattab رضي الله عنه. From that day, Muslims prayed openly at the Ka'bah. Umar walked with the Prophet ﷺ in public. His acceptance of Islam was a turning point — a moment of great courage and strength for the entire Muslim community.</div>`
+  },
+  /* 31 */ {
+    unit:"Unit 6 · Lesson 32", title:"Hamza Accepts Islam", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🦁 The Lion of Allah</h3>
+    <p><strong>Hamza ibn Abd al-Muttalib</strong> رضي الله عنه — the Prophet's ﷺ uncle — was one of the bravest, most powerful warriors in all of Arabia. He loved hunting and was deeply respected throughout Makkah.</p>
+    <p>One day, Abu Jahl — the worst enemy of the Prophet ﷺ — met Muhammad ﷺ near the Ka'bah and insulted and physically harmed him shamefully. A woman witnessed the whole thing. When Hamza returned from a hunting trip, she told him what had happened. Hamza was immediately furious. He marched straight to Abu Jahl and struck him with his bow: <em>"You harm him?! Then know that I am on his religion!"</em></p></div>
+    <div class="prose block"><h3>💭 A Night of True Reflection</h3>
+    <p>That night, Hamza lay awake. He had spoken out of anger and family loyalty — but now he thought: <em>Do I actually believe? Is this truly from Allah?</em> He struggled through the night, sincerely asking Allah to open his heart if this was truth. By morning, his heart had opened fully and completely. He went to the Prophet ﷺ and declared his faith — sincere, deep, from the soul. From that day, Hamza رضي الله عنه was one of the fiercest defenders of Islam. He was later martyred at the Battle of Uhud. The Prophet ﷺ called him <em>Sayyid al-Shuhada'</em> — the <strong>Master of the Martyrs</strong>.</p></div>`
+  },
+  /* 32 */ {
+    unit:"Unit 7 · Lesson 33", title:"Why Did Quraysh Hate Islam?", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>💰 Power, Pride, and Profit</h3>
+    <p>When the Prophet ﷺ began calling people publicly to Islam, the powerful chiefs of Quraysh turned against him with anger and fear. Three main reasons:</p>
+    <p><strong>1. Islam said all people are equal.</strong> Rich and poor, Arab chief and African slave — all equal before Allah. This threatened a society built on class and privilege.</p>
+    <p><strong>2. Islam said the idols were worthless.</strong> Makkah's entire economy revolved around idol worship. Traders came from all over Arabia for the Ka'bah season. Islam would end all of that.</p>
+    <p><strong>3. Islam gave dignity to the powerless.</strong> Slaves, women, the poor — Islam gave them rights and honour. This was threatening to those whose power depended on keeping others down.</p></div>
+    <div class="red-box block"><span class="lbl">The Cowardly Response</span>They couldn't easily harm the Prophet ﷺ directly — he had Abu Talib's protection. So they did something cowardly: they targeted the <strong>weak and vulnerable</strong> — the poor, the freed slaves, those with no tribal protection — and tortured them in the streets and desert, trying to force them to abandon Islam.</div>`
+  },
+  /* 33 */ {
+    unit:"Unit 7 · Lesson 34", title:"Sumayyah — The First Martyr of Islam", loc:"The Desert of Makkah",
+    html:`
+    <div class="prose block"><h3>👨‍👩‍👦 A Family Without Protection</h3>
+    <p>Among the early Muslims was a family from Yemen: <strong>Yasir ibn Amir</strong>, his wife <strong>Sumayyah bint Khayyat</strong>, and their son <strong>Ammar ibn Yasir</strong>. They were poor and had no powerful tribe to protect them — which made them easy targets.</p>
+    <p>The cruel chief <strong>Abu Jahl</strong> would drag them out to the desert at midday — when the Arabian sun was at its most brutal — and force them to lie on scorching sand, torturing them to make them deny Islam.</p></div>
+    <div class="prose block"><h3>💛 The Prophet's Words to Them</h3>
+    <p>The Prophet ﷺ would sometimes pass by as they were being tortured. He had no army to stop it. But he would look at them with tears and say: <strong><em>"Be patient, O family of Yasir! Your appointment is Paradise!"</em></strong></p>
+    <p><strong>Yasir رضي الله عنه</strong> was tortured until he died — one of the first martyrs. Then Abu Jahl turned on the elderly <strong>Sumayyah رضي الله عنها</strong>. She was an old woman. She refused to give up Islam. He stabbed her. She died with faith in her heart and the name of Allah on her lips.</p>
+    <p><strong>Sumayyah رضي الله عنها</strong> became the <strong>first martyr of Islam</strong> — the first person to give their life for this faith. May Allah be pleased with her and grant her the highest place in Jannah.</p></div>
+    <div class="prose block"><h3>🔥 Ammar's Test</h3>
+    <p><strong>Ammar رضي الله عنه</strong>, their son, was also tortured — burned and nearly drowned. Under unbearable pain he said the words they demanded. He came to the Prophet ﷺ in tears, thinking he had left Islam. The Prophet ﷺ asked: "What is in your heart?" Ammar said: "Faith." The Prophet ﷺ comforted him: you are not a disbeliever when your heart is firm. Allah later revealed: <em>"Except one who is forced while his heart is still secure in faith."</em> (Surah An-Nahl: 106). Ammar رضي الله عنه grew to become a great companion. The Prophet ﷺ said: <em>"Ammar is filled with faith from his head to his toes."</em></p></div>`
+  },
+  /* 34 */ {
+    unit:"Unit 7 · Lesson 35", title:"Bilal — Tortured but Unbreakable", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>⛓️ One Word Against the World</h3>
+    <p><strong>Bilal ibn Rabah رضي الله عنه</strong> was an enslaved man of Abyssinian (Ethiopian) origin, owned by <strong>Umayyah ibn Khalaf</strong>. When Umayyah discovered Bilal had accepted Islam, he took him out to the desert midday. He placed a huge, heavy rock on Bilal's chest — scorching hot from the sun — and demanded he deny Muhammad ﷺ and return to worshipping idols.</p>
+    <p>Bilal refused. Over and over. And all he would say was: <strong>"Ahad! Ahad!"</strong> — <em>"One! One!"</em> — Allah is One. Nothing could make him say otherwise.</p></div>
+    <div class="prose block"><h3>🕊️ Abu Bakr Buys His Freedom</h3>
+    <p>Abu Bakr رضي الله عنه came to Umayyah and bought Bilal's freedom — paying whatever price was asked. He freed other tortured Muslims too, spending enormous amounts of his own wealth to purchase the freedom of enslaved believers. His father asked why he didn't free someone "useful." Abu Bakr replied: <em>"I am seeking the reward from Allah."</em></p>
+    <p>Bilal رضي الله عنه went on to become the first ever <em>Muadhdhin</em> (caller to prayer) in Islamic history. From chains and a crushing rock to the highest tower calling Allahu Akbar — what a journey only Allah could write.</p></div>`
+  },
+  /* 35 */ {
+    unit:"Unit 7 · Lesson 36", title:"The Boycott — Three Years in the Valley", loc:"Shi'b Abi Talib — Makkah",
+    html:`
+    <div class="prose block"><h3>📜 A Document of Injustice</h3>
+    <p>When all other schemes failed, the chiefs of Quraysh wrote a total boycott agreement and hung it on the Ka'bah to make it official: <strong>No one may trade with, marry from, speak to, or in any way deal with the Banu Hashim clan</strong> until they hand Muhammad ﷺ over.</p>
+    <p>The Muslims and Banu Hashim were forced into a narrow valley called <strong>Shi'b Abi Talib</strong>. For <strong>three years</strong>, they were cut off from all food, supplies, and commerce.</p></div>
+    <div class="red-box block"><span class="lbl">Life in the Valley</span>The hardship was severe. Supplies barely trickled in. Children cried from hunger — their sounds sometimes drifted out to the Makkans outside, shaming some of them. People ate leaves from trees. Some grew so weak they could barely walk. Yet no one abandoned their faith.</div>
+    <div class="prose block"><h3>🐛 How the Boycott Ended</h3>
+    <p>After three years, several decent Makkan leaders had had enough and moved to tear up the document — and legend has it that when they retrieved it from the Ka'bah, <em>worms had eaten the entire parchment</em>, leaving only the words "In Your Name, O Allah." A sign from Allah: only His name remained. The boycott ended. The Muslims emerged from the valley — weakened in body, but unbroken in faith.</p></div>`
+  },
+  /* 36 */ {
+    unit:"Unit 8 · Lesson 37", title:"Escaping to Abyssinia", loc:"Makkah → Abyssinia (modern-day Ethiopia & Eritrea)",
+    html:`
+    <div class="prose block"><h3>🚢 The First Hijrah</h3>
+    <p>Before the boycott — in the <strong>5th year of Prophethood (615 CE)</strong> — as persecution grew unbearable, the Prophet ﷺ told some companions: <em>"Go to Abyssinia. Its king is a just man. No one is wronged in his land. Stay there until Allah makes a way for you."</em></p>
+    <p>Two waves of Muslims crossed the Red Sea to <strong>Abyssinia (Al-Habashah)</strong>, ruled by a Christian king known as <strong>An-Najashi (the Negus)</strong> — Ashama ibn Abjar. The first group was about 15 people. The second, larger group was around 80 companions, including <strong>Uthman ibn Affan رضي الله عنه</strong> and the Prophet's ﷺ daughter <strong>Ruqayyah رضي الله عنها</strong>.</p></div>
+    <div class="prose block"><h3>😤 Quraysh Sends Envoys</h3>
+    <p>The leaders of Quraysh sent two clever diplomats — <strong>Amr ibn al-As</strong> and <strong>Abdullah ibn Abi Rabia</strong> — with expensive gifts to bribe the king's court, then to tell the Negus: <em>"These people follow a new religion that is neither ours nor yours. Hand them back to us."</em> But the Negus was a man of fairness: <em>"I will not give them up until I hear what they have to say for themselves."</em></p></div>`
+  },
+  /* 37 */ {
+    unit:"Unit 8 · Lesson 38", title:"Ja'far Speaks Before the King", loc:"The Royal Court — Abyssinia",
+    html:`
+    <div class="prose block"><h3>🗣️ Words of Truth Before a King</h3>
+    <p>The Muslims chose <strong>Ja'far ibn Abi Talib رضي الله عنه</strong> — the Prophet's ﷺ cousin, gifted with wisdom and eloquence — to speak for them. He stood before the Negus and said:</p></div>
+    <div class="gold-box block"><span class="lbl">💛 Ja'far's Speech</span>"O King! We were a people of ignorance — worshipping idols, eating forbidden things, committing evil, breaking family ties, and the strong among us oppressed the weak. Then Allah sent us a messenger from our own people — known to us for his truthfulness, trustworthiness, and purity. He called us to worship Allah alone. He commanded us to speak truth, return what is entrusted to us, care for our families, be good neighbours, and avoid all that is harmful. Our people rose against us and tortured us, trying to make us return to worshipping idols. So we came to your country — choosing you above all others — hoping to find justice."</div>
+    <div class="prose block"><h3>😭 The King Weeps</h3>
+    <p>The Negus asked: "What does your prophet say about Jesus and Mary?" Ja'far رضي الله عنه recited from <strong>Surah Maryam</strong> — the chapter of Mary — which describes the miraculous birth of Jesus ﷺ with profound honour and reverence.</p>
+    <p>The Negus wept until his beard was wet with tears. His advisors also wept. He picked up a small stick: <em>"By Allah, the difference between what this prophet says and what Jesus said is no more than this stick!"</em> He turned to the Qurayshi envoys: <strong>"I will NOT give these people to you. They are under my protection."</strong> He returned their gifts and sent them away.</p></div>`
+  },
+  /* 38 */ {
+    unit:"Unit 8 · Lesson 39", title:"The Negus Accepts Islam — Muslims Return", loc:"Abyssinia → Makkah / Madinah",
+    html:`
+    <div class="prose block"><h3>👑 A King Who Chose Truth</h3>
+    <p>According to authentic narrations, <strong>An-Najashi accepted Islam</strong>. He sent a private message to the Prophet ﷺ declaring his belief. He could not announce it publicly — his court and people might revolt — but in his heart he was a Muslim, and he lived and died on that faith.</p>
+    <p>When the Negus passed away, the Prophet ﷺ told his companions in Madinah: <em>"A righteous man died today. Pray for your brother Ashama."</em> He then led them in a funeral prayer — even though the Negus was in another country. This is the origin of <strong>Salat al-Ghayb</strong> — the funeral prayer in absentia.</p></div>
+    <div class="prose block"><h3>🏠 The Muslims Return</h3>
+    <p>Most Muslims who had migrated to Abyssinia eventually <strong>returned</strong> — especially after the powerful acceptance of Islam by Hamza and Umar رضي الله عنهما changed the atmosphere in Makkah. Others stayed longer and came to Madinah after the Hijrah. The whole experience of Abyssinia showed the world that Islam was not just an Arab matter — truth can be recognised by people from any background, any religion, any land.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>The migration to Abyssinia is sometimes called the first Hijrah in Islam. It shows us that when Muslims face oppression, seeking safety is a legitimate and honourable choice. The Prophet ﷺ did not tell them to fight — he told them to go, live safely, and worship Allah in peace.</div>`
+  },
+  /* 39 */ {
+    unit:"Unit 9 · Lesson 40", title:"Death of Khadijah رضي الله عنها", loc:"Makkah — 619 CE",
+    html:`
+    <div class="prose block"><h3>💔 The Year of Sadness Begins</h3>
+    <p>The <strong>10th year of Prophethood</strong> is remembered as <strong>'Aam al-Huzn</strong> — the <strong>Year of Sadness</strong>. The three brutal years of the boycott had taken a great toll. Khadijah رضي الله عنها had given everything — her wealth, her comfort, her health — in service of the Prophet ﷺ and the Muslim community.</p>
+    <p>When she fell ill, she did not recover. She passed away, and the Prophet ﷺ was devastated. She had been his wife for 25 years — his home, his comfort, his greatest supporter, the mother of his children, the first believer, and the first person to tell him he was worthy of the mission Allah had given him.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 Allah Sends Her Salaam</span>During her illness, Angel Jibreel ﷺ came to the Prophet ﷺ and said: "Give Khadijah greetings of peace from her Lord, and glad tidings of a house in Paradise made of pearl, where there is no noise and no tiredness." (Bukhari) The Lord of all creation sent a personal greeting to this faithful woman. She earned every word of it.</div>
+    <div class="prose block"><h3>💛 Never Forgotten</h3>
+    <p>Years after Khadijah رضي الله عنها passed away, the Prophet ﷺ still spoke of her constantly. When asked about it, he said: <em>"She believed in me when no one else did. She accepted me when people rejected me. She helped me with her wealth when everyone held back. And Allah blessed me with children through her and no other."</em></p></div>`
+  },
+  /* 40 */ {
+    unit:"Unit 9 · Lesson 41", title:"The Journey to Taif — A Hard Day", loc:"Taif — A City East of Makkah",
+    html:`
+    <div class="prose block"><h3>🚶 Looking for Support</h3>
+    <p>After Khadijah's death and with Abu Talib growing weaker, the Prophet ﷺ decided to travel to the nearby city of <strong>Taif</strong> — home to the powerful <strong>Banu Thaqif</strong> tribe — to call them to Islam and seek their support. He went on foot with only his adopted son <strong>Zayd ibn Harithah رضي الله عنه</strong>. He spent about ten days there, calling its leaders to Islam.</p></div>
+    <div class="red-box block"><span class="lbl">The Worst Day of His Life</span>The chiefs of Taif mocked him, insulted him, and refused to listen. Then — cruelly — they sent their servants and street children to line the road and <strong>throw stones at him</strong> as he left the city. They pelted his feet until both sandals filled with blood. He bled as he walked, and Zayd tried to shield him with his body.</div>
+    <div class="prose block"><h3>🌿 The Du'a at Taif</h3>
+    <p>Exhausted and bleeding, the Prophet ﷺ sat under a grape vine and raised his hands to Allah. He did not call for punishment on those who hurt him. He said:</p></div>
+    <div class="gold-box block"><span class="lbl">💛 His Prayer That Day</span>"O Allah, to You I complain of the weakness of my strength and my being of little importance to people. O Most Merciful! You are the Lord of the weak and You are my Lord. To whom do You leave me? To a distant stranger who will mistreat me? Or to an enemy you have given power over me? If You are not angry with me, then I do not care what I face. But Your pardon is more vast for me. I seek refuge in the light of Your face by which all darkness is lit — that Your anger should fall upon me. I seek Your pleasure until You are pleased. There is no power or strength except with You."</div>
+    <div class="prose block"><h3>👼 He Chose Hope Over Revenge</h3>
+    <p>Angel Jibreel ﷺ appeared with the Angel of the Mountains and offered: <em>"Command us and we will crush these people between the two mountains of Taif."</em> The Prophet ﷺ said: <em>"No. Perhaps from their children will come those who say La ilaha illallah."</em> He forgave them. He chose hope over revenge. And indeed — Taif eventually accepted Islam, and some of the greatest later Muslims came from that very city.</p></div>`
+  },
+  /* 41 */ {
+    unit:"Unit 9 · Lesson 42", title:"Abu Talib's Last Breath", loc:"Makkah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🛏️ A Final Conversation</h3>
+    <p>Shortly after his return from Taif, the Prophet ﷺ faced another great sorrow. His uncle <strong>Abu Talib</strong> — who had protected him for decades — fell gravely ill and was dying. The chiefs of Quraysh, including Abu Jahl, came to his bedside hoping to use his dying moments to make the Prophet ﷺ agree to stop his mission.</p>
+    <p>The Prophet ﷺ came and sat close to his uncle, gently saying: <em>"O uncle, say one word — 'La ilaha illallah' — and I will argue for you with it before Allah on the Day of Judgment."</em></p></div>
+    <div class="prose block"><h3>😢 So Close, Yet So Far</h3>
+    <p>Abu Jahl was right there whispering: <em>"Will you abandon the religion of Abd al-Muttalib?"</em> Back and forth. Abu Talib was caught between his love for his nephew and the pull of his ancestral way. His last words were: <em>"I am on the religion of Abd al-Muttalib."</em> He passed away without the testimony of faith.</p>
+    <p>The Prophet ﷺ said: <em>"I will continue to ask forgiveness for you as long as I am not forbidden."</em> Then Allah revealed: <em>"It is not for the Prophet or the believers to seek forgiveness for the polytheists, even if they were near relatives."</em> (Surah At-Tawbah: 113). And: <em>"Indeed, you do not guide whom you love. But Allah guides whom He wills."</em> (Surah Al-Qasas: 56)</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 For Us to Remember</span>The Prophet ﷺ loved his uncle deeply and wanted nothing more than for him to be saved. But guidance is from Allah alone — not from us, not even from the Prophet ﷺ himself. Our job is to convey the message with love and clarity. The results belong to Allah.</div>`
+  },
+  /* 42 */ {
+    unit:"Unit 9 · Lesson 43", title:"Isra wal Mi'raj — The Night Journey", loc:"Makkah → Jerusalem → The Heavens",
+    html:`
+    <div class="prose block"><h3>🌙 A Gift After the Hardest Days</h3>
+    <p>After the loss of Khadijah, the rejection at Taif, and the death of Abu Talib — after the hardest stretch of years in his life — Allah gave the Prophet ﷺ the most extraordinary experience any human being has ever had: <strong>Al-Isra wal Mi'raj</strong> — The Night Journey and the Ascension.</p></div>
+    <div class="prose block"><h3>🚀 Al-Isra — Jerusalem in a Night</h3>
+    <p>In a single night, the Prophet ﷺ was carried by Angel Jibreel ﷺ from <strong>Masjid Al-Haram</strong> in Makkah to <strong>Masjid Al-Aqsa</strong> in Jerusalem — a journey that normally took a month — in mere moments. He rode a heavenly creature called <strong>Al-Buraq</strong>. At Al-Aqsa, all the great Prophets gathered. Muhammad ﷺ led them all in prayer — as the Imam of all Prophets — showing his rank as the last and greatest.</p></div>
+    <div class="prose block"><h3>✨ Al-Mi'raj — Rising Through the Heavens</h3>
+    <p>Then the Prophet ﷺ ascended through the seven heavens, meeting a Prophet in each:</p>
+    <div class="badges"><span class="badge">1st — Adam ﷺ</span><span class="badge">2nd — Yahya & Isa ﷺ</span><span class="badge">3rd — Yusuf ﷺ</span><span class="badge">4th — Idris ﷺ</span><span class="badge">5th — Harun ﷺ</span><span class="badge">6th — Musa ﷺ</span><span class="badge">7th — Ibrahim ﷺ</span></div>
+    <p>He reached the <strong>Sidrat al-Muntaha</strong> — the Lote Tree at the furthest boundary — and there, closer to Allah than any human being has ever been, he received the greatest gift: the command of the five daily prayers.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Isra (17:1)</span>"Glory be to the One who took His servant on a night journey from Al-Masjid Al-Haram to Al-Masjid Al-Aqsa, whose surroundings We have blessed, to show him of Our signs. Indeed, He is the All-Hearing, the All-Seeing."</div>`
+  },
+  /* 43 */ {
+    unit:"Unit 9 · Lesson 44", title:"The Gift of Five Daily Prayers", loc:"The Heavens — During the Mi'raj",
+    html:`
+    <div class="prose block"><h3>🕌 Fifty — Then Five</h3>
+    <p>When the Prophet ﷺ was in the presence of Allah during the Mi'raj, he was commanded <strong>fifty prayers every day</strong>. He accepted and began descending. On the way back, he passed Prophet <strong>Musa ﷺ</strong> in the sixth heaven. Musa said: <em>"Your nation cannot manage fifty prayers. Go back and ask for reduction."</em></p>
+    <p>The Prophet ﷺ kept returning to Allah — and each time ten were reduced — until the prayers became <strong>five</strong>. Musa asked him to go back again. But the Prophet ﷺ said: <em>"I am too shy to keep returning to my Lord. I accept and submit."</em></p>
+    <p>Then a voice declared: <strong>"I have fulfilled My obligation and made things easy for My servants. Whoever performs these five, it will be recorded as fifty for them."</strong> Five prayers in action — fifty in reward. This is Allah's generosity.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 The Prayer Is a Gift From the Highest Place</span>The five daily prayers were not given through Angel Jibreel on Earth like other commands. They were given directly, in the heavens, in the closest moment any human being has ever had with Allah. Every time we pray, we are keeping a covenant made at the highest point in all of existence. The prayer is our direct connection with our Creator — five times every day.</div>`
+  },
+  /* 44 */ {
+    unit:"Unit 10 · Lesson 45", title:"The People of Madinah — Pledges of Aqabah", loc:"Makkah & Aqabah (near Mina)",
+    html:`
+    <div class="prose block"><h3>🌱 A New Hope</h3>
+    <p>After the Year of Sadness, the Prophet ﷺ began meeting new tribes at Hajj season. He found willing ears among people from <strong>Yathrib</strong> (the city that would become Madinah). Their hearts were open — they had heard descriptions of a coming prophet from their Jewish neighbours. Something clicked when they heard the Prophet ﷺ speak.</p>
+    <p>In the <strong>First Pledge of Aqabah</strong>, a small group pledged: to worship Allah alone, not steal, not lie, not commit immoral acts. A companion named <strong>Mus'ab ibn Umayr رضي الله عنه</strong> — young, eloquent, and refined — was sent back with them to teach Islam. He was remarkably successful. Islam spread rapidly through Yathrib.</p>
+    <p>The following year came the <strong>Second Pledge of Aqabah</strong> — about 73 men and 2 women pledged to protect the Prophet ﷺ as they would protect their own families. One said: <em>"O Messenger of Allah, we are people of war and weapons — it is in our nature."</em> This pledge was the green light: a safe city, willing protectors, a new home for Islam.</p></div>`
+  },
+  /* 45 */ {
+    unit:"Unit 10 · Lesson 46", title:"The Plot to Kill the Prophet ﷺ", loc:"Makkah — Dar an-Nadwah (the Council House)",
+    html:`
+    <div class="prose block"><h3>⚡ Quraysh Panics</h3>
+    <p>When the chiefs of Quraysh realised Muslims were quietly leaving Makkah for Yathrib — and that the Prophet ﷺ would soon have a protected city full of allies — they called an emergency gathering at their council house, <strong>Dar an-Nadwah</strong>. They debated urgently: what do we do about Muhammad ﷺ?</p>
+    <p>Options discussed: exile him — but he might return stronger. Imprison him forever — his family would rescue him. Then <strong>Abu Jahl</strong> proposed the most wicked plan: choose one young man from <em>each tribe</em> — all strike simultaneously — so that the blame would be spread across every tribe and none could be held solely responsible. The Banu Hashim could not take revenge on all of them at once.</p>
+    <p>They agreed. That very night, armed young men surrounded the Prophet's ﷺ house with swords.</p></div>
+    <div class="prose block"><h3>🌟 But Allah Had a Plan</h3>
+    <p>Allah revealed to the Prophet ﷺ exactly what was being plotted and gave him permission to leave Makkah. The Prophet ﷺ went to Abu Bakr رضي الله عنه: <em>"Allah has given me permission to migrate. You will be my companion."</em> Abu Bakr wept with joy — he had been waiting and preparing for exactly this day.</p></div>`
+  },
+  /* 46 */ {
+    unit:"Unit 10 · Lesson 47", title:"Ali Sleeps in the Prophet's Bed", loc:"Makkah — The Prophet's House",
+    html:`
+    <div class="prose block"><h3>🛌 Courage Without Hesitation</h3>
+    <p>Before leaving, the Prophet ﷺ had valuables to return — things entrusted to him by people in Makkah, even enemies, who trusted Al-Amin. He asked <strong>Ali ibn Abi Talib رضي الله عنه</strong> to stay in his bed, wrapped in his green cloak — so that anyone watching the house would think Muhammad ﷺ was still inside, buying time.</p>
+    <p>Ali رضي الله عنه agreed without a single moment of hesitation — knowing fully that armed men with swords were outside, ready to kill whoever was in that bed. This act of selfless courage is one of the most celebrated moments in all of Islamic history.</p></div>
+    <div class="prose block"><h3>👣 Walking Past the Swords</h3>
+    <p>The Prophet ﷺ stepped out of his house into the dark. He took a handful of dust and recited from the beginning of <strong>Surah Ya-Sin</strong>: <em>"...and We have placed a barrier before them and behind them, and We have covered them so they cannot see."</em> He threw the dust into the air — and by Allah's will, not one of the waiting men perceived him. He walked right past them all.</p>
+    <p>In the morning, the armed men rushed in — and found <strong>Ali رضي الله عنه</strong> rising calmly from the bed. The Prophet ﷺ was gone. Ali رضي الله عنه then spent three days in Makkah returning all the people's belongings as instructed, before making his own journey to Madinah on foot.</p></div>`
+  },
+  /* 47 */ {
+    unit:"Unit 10 · Lesson 48", title:"The Cave of Thawr — Three Days of Hiding", loc:"Ghar Thawr — South of Makkah",
+    html:`
+    <div class="prose block"><h3>🕸️ 100 Camels on Their Heads</h3>
+    <p>The Prophet ﷺ and Abu Bakr رضي الله عنه made their way south to <strong>Ghar Thawr</strong> — a cave on a mountain south of Makkah. They hid inside for <strong>three days</strong>. Quraysh erupted with rage when they found him gone, and placed a reward of <strong>100 camels</strong> on whoever could capture the Prophet ﷺ. Trackers spread in every direction. One day, they followed fresh tracks right to the cave's entrance and were just outside the opening.</p></div>
+    <div class="prose block"><h3>💙 "Allah Is With Us"</h3>
+    <p>Abu Bakr رضي الله عنه whispered tightly: <em>"O Messenger of Allah — if any of them looks at his feet, he will see us!"</em> The Prophet ﷺ was completely calm. He replied: <strong><em>"O Abu Bakr, what do you think of two — when Allah is their third?"</em></strong></p>
+    <p>Allah commanded a spider to spin her web across the cave's mouth, and doves to build a nest and lay eggs there. The trackers looked at the entrance: <em>"No one has entered here recently — the web is unbroken, the doves are nesting."</em> They walked away. Allah had protected His Prophet with the smallest and most humble of creatures.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah At-Tawbah (9:40)</span>"If you do not help him — Allah has already helped him when the disbelievers drove him out, the second of two, when they were in the cave, when he said to his companion: 'Do not grieve — Allah is with us.' And Allah sent down His tranquility upon him."</div>`
+  },
+  /* 48 */ {
+    unit:"Unit 10 · Lesson 49", title:"Asma, Abdullah & the Journey North", loc:"Makkah & the Desert Road to Madinah",
+    html:`
+    <div class="prose block"><h3>🍞 A Brave Daughter in the Night</h3>
+    <p>Every night during the three days in the cave, Abu Bakr's daughter <strong>Asma bint Abi Bakr رضي الله عنها</strong> secretly brought food — walking alone in the dark, risking being followed. She tore her belt (<em>nitaq</em>) in two to tie the food bags, and received the beautiful title: <strong>Dhaat An-Nitaqayn</strong> — the Woman of Two Belts. The Prophet ﷺ made du'a for her.</p>
+    <p>Abu Bakr's son <strong>Abdullah</strong> spent his days in Makkah listening to Quraysh's plans and came to the cave each night to report. A shepherd covered the tracks by grazing his flock near the cave entrance to confuse any trackers.</p></div>
+    <div class="prose block"><h3>🐪 The Road to Madinah</h3>
+    <p>After three days, their guide <strong>Abdullah ibn Urayqit</strong> arrived with camels. They took a lesser-known coastal route to avoid the main roads Quraysh was watching. The journey took about 8–9 days. Along the way, the Prophet ﷺ stopped at the tent of a woman named <strong>Umm Ma'bad</strong>. Her old goat gave no milk — until he prayed over it — and suddenly the vessel overflowed. Her description of the Prophet ﷺ to her husband is one of the most detailed and beautiful physical descriptions we have of him.</p></div>`
+  },
+  /* 49 */ {
+    unit:"Unit 10 · Lesson 50", title:"Welcome to Madinah!", loc:"Al-Madinah Al-Munawwarah — 1 AH / 622 CE",
+    html:`
+    <div class="prose block"><h3>🎉 A City Bursts With Joy</h3>
+    <p>Word reached Madinah: the Prophet ﷺ is coming! The <strong>Ansar</strong> — the people of Madinah who had pledged to receive him — rushed out with joy. Children climbed rooftops. Women and girls came to the streets singing songs of welcome. Voices rose with the famous nasheed of Madinah.</p>
+    <p>The Prophet ﷺ entered on <strong>12 Rabi' al-Awwal, 1 AH</strong> (September 622 CE), and the whole city lit up with the joy of his arrival. This migration — the <strong>Hijrah</strong> — was so important that it marks the beginning of the Islamic calendar. All Islamic dates are counted from this moment.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 A City Renamed</span>Before the Prophet ﷺ arrived, the city was called <strong>Yathrib</strong>. He renamed it <strong>Al-Madinah</strong> — "The City" — or in full, <em>Madinah an-Nabi</em>: "The City of the Prophet." He also called it <em>At-Taybah</em> — the Good and Pure. A city's name can carry its greatest moment — and this city's greatest moment was receiving the Messenger of Allah ﷺ.</div>`
+  },
+  /* 50 */ {
+    unit:"Unit 11 · Lesson 51", title:"Building Masjid An-Nabawi", loc:"Madinah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🐪 Where the Camel Stopped</h3>
+    <p>When the Prophet ﷺ entered Madinah on his camel <strong>Qaswa</strong>, every family rushed forward wanting to host him. To be fair, he let the camel walk freely: wherever she stopped, that was where he would settle. Qaswa knelt in an open area belonging to two orphan boys, <strong>Sahl and Suhayl</strong>. The Prophet ﷺ declared: <em>"This — Allah willing — is our place."</em> He bought the land fairly (even though the boys offered it as a gift) and they began to build.</p></div>
+    <div class="prose block"><h3>🧱 Everyone Built Together</h3>
+    <p>The Prophet ﷺ worked alongside his companions — carrying bricks, mixing mud, building walls. No one was too important to work. The companions sang as they built. The result was <strong>Masjid An-Nabawi</strong> — the Prophet's Mosque — which stands in Madinah to this day (greatly expanded over the centuries) and is the second most sacred mosque on Earth. One prayer there equals 1,000 prayers elsewhere.</p></div>
+    <div class="purple-box block"><span class="lbl">Did you know?</span>Abu Ayyub Al-Ansari رضي الله عنه hosted the Prophet ﷺ for about 7 months while the Masjid was being built. He insisted on sleeping on the ground floor, not wanting his feet to be above the Prophet ﷺ who was upstairs. This is the love of the Ansar.</div>`
+  },
+  /* 51 */ {
+    unit:"Unit 11 · Lesson 52", title:"The Brotherhood — Muhajirun & Ansar", loc:"Madinah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>🤝 Two Groups Become One Family</h3>
+    <p>The Muslims from Makkah were called <strong>Al-Muhajirun</strong> (the Emigrants). The Muslims of Madinah who welcomed them were called <strong>Al-Ansar</strong> (the Helpers). The Prophet ﷺ paired each Muhajir with an Ansari as official brothers in Islam — <em>Al-Muakhah</em>, the Brotherhood. The Ansar opened their homes, shared their food, split their farmland, and gave their wealth freely.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Hashr (59:9)</span>"And those who were already settled in the city and in faith before them — they love those who migrated to them, and find in their hearts no need for what has been given to the emigrants, and prefer them over themselves, even if they are in poverty. And whoever is protected from the stinginess of their own soul — it is they who are successful."</div>
+    <div class="prose block"><h3>📜 The Constitution of Madinah</h3>
+    <p>Madinah had Muslims, Jews, and Arab tribes of different religions. The Prophet ﷺ drew up a written agreement — the <strong>Constitution of Madinah</strong> — setting out rights and responsibilities for everyone. Security, justice, and cooperation for all residents. One of the earliest written constitutions in human history.</p></div>`
+  },
+  /* 52 */ {
+    unit:"Unit 11 · Lesson 53", title:"The Adhan — Bilal's Beautiful Call", loc:"Madinah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>📣 How Shall We Call People to Prayer?</h3>
+    <p>In the early days of Madinah, the companions discussed: how do we gather people for prayer? Some suggested a bell like churches. Others suggested a horn like some Jewish communities. The Prophet ﷺ disliked both. Then a companion named <strong>Abdullah ibn Zayd رضي الله عنه</strong> came having seen a vision: a man in green had taught him certain words. The Prophet ﷺ said: <em>"This is a true vision, if Allah wills!"</em></p></div>
+    <div class="prose block"><h3>📣 Bilal's Voice Rings Out</h3>
+    <p>The Prophet ﷺ chose <strong>Bilal ibn Rabah رضي الله عنه</strong> — the man who had been tortured with a boulder on his chest in Makkah's desert, who had cried "Ahad! Ahad!" — to be the first <em>Muadhdhin</em> (caller to prayer) in Islamic history. His powerful, beautiful voice climbed to the rooftop and rang out across Madinah for the first time.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 From Chains to the Adhan</span>The man they tried to silence now stood above the city calling all of Madinah to prayer: "Allahu Akbar! Allahu Akbar! I bear witness there is no god but Allah! I bear witness Muhammad is the Messenger of Allah!" The man who said "Ahad!" under torture now announced the Oneness of Allah to the whole world. Only Allah writes stories like this.</div>`
+  },
+  /* 53 */ {
+    unit:"Unit 11 · Lesson 54", title:"Marriage to Aishah رضي الله عنها", loc:"Madinah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>💛 A New Chapter</h3>
+    <p>In Madinah, the Prophet ﷺ married several women — these marriages were often for important reasons: building ties between tribes, caring for widows of fallen companions, or forming alliances that strengthened the Muslim community. Among all his wives, <strong>Aishah bint Abi Bakr رضي الله عنها</strong> — daughter of his dearest friend Abu Bakr — held a uniquely cherished place.</p>
+    <p>She was sharp-minded, curious, deeply intelligent, and would become one of the greatest Islamic scholars the world has ever known. The Prophet ﷺ loved her deeply. When asked whom he loved most of all people, he replied: <em>"Aishah."</em> When someone asked about men, he said: <em>"Her father."</em> (Bukhari)</p></div>
+    <div class="prose block"><h3>📚 The Scholar of Islam</h3>
+    <p>Aishah رضي الله عنها narrated more than 2,000 hadith — recorded words and actions of the Prophet ﷺ. Companions came from far and near to ask her questions after the Prophet ﷺ passed away. The great companion Abu Musa Al-Ash'ari رضي الله عنه said: <em>"Whenever we companions were confused about any matter, and we asked Aishah, we always found knowledge with her."</em></p>
+    <p>She was a teacher, scholar, speaker, and wise counsellor. Her life reminds us: knowledge and learning are among the greatest gifts a person can have — and they belong to anyone, of any background, who pursues them sincerely.</p></div>`
+  },
+  /* 54 */ {
+    unit:"Unit 12 · Lesson 55", title:"Why Did Battles Happen?", loc:"Madinah, Arabian Peninsula",
+    html:`
+    <div class="prose block"><h3>⚔️ Permission to Defend</h3>
+    <p>In Madinah, the Muslims finally had a safe home. But they were not left in peace. Quraysh continued plotting, other tribes threatened them, and the wealth the Muhajirun had left in Makkah had been seized by their enemies. For the first time, Allah gave the Muslims permission to fight — not to attack, but to <strong>defend:</strong></p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Hajj (22:39–40)</span>"Permission to fight has been given to those who are being fought, because they were wronged. And indeed, Allah is capable of giving them victory — those who were expelled from their homes without right, only because they say: 'Our Lord is Allah.'"</div>
+    <div class="prose block"><h3>📌 The Ethics of Islamic Warfare</h3>
+    <p>The battles of Islam were not fought for land, glory, or wealth. They were fought to protect the right of people to worship Allah and to remove oppression. The Prophet ﷺ had strict rules: do not kill women, children, or the elderly. Do not destroy crops or burn homes. Do not mutilate. Do not break treaties. These rules of Islamic warfare were far ahead of most armies in history.</p></div>`
+  },
+  /* 55 */ {
+    unit:"Unit 12 · Lesson 56", title:"Battle of Badr — 313 vs. 1,000", loc:"Badr — Southwest of Madinah — 2 AH / 624 CE",
+    html:`
+    <div class="prose block"><h3>🌙 The Night Before — The Prophet's Du'a</h3>
+    <p>The first major battle of Islam took place at <strong>Badr</strong>. A Quraysh army of about <strong>1,000</strong> well-armed fighters marched out. The Muslim force had only <strong>313 men</strong> — poorly equipped, many on foot.</p>
+    <p>The night before battle, the Prophet ﷺ stood in prayer for hours, calling to Allah with his whole heart: <em>"O Allah, if this small group perishes today, You will not be worshipped on Earth. O Allah, fulfil what You have promised me!"</em> Abu Bakr رضي الله عنه gently held his cloak: <em>"You have called upon your Lord enough — He will fulfil His promise."</em></p></div>
+    <div class="prose block"><h3>👼 Allah's Army Arrives</h3>
+    <p>Allah sent thousands of angels to fight alongside the believers. The Quraysh army, despite its size, was broken. Seventy of Quraysh's greatest chiefs were killed — including the hated <strong>Abu Jahl</strong>. Seventy more were taken prisoner. The Muslims suffered 14 martyrs.</p>
+    <p>Badr was not just a military victory. It was proof: Allah's promise is real. A small, honest army trusting in Allah can face the mightiest force — and prevail.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Anfal (8:17)</span>"You did not kill them — Allah killed them. And you did not throw when you threw — but Allah threw."</div>`
+  },
+  /* 56 */ {
+    unit:"Unit 12 · Lesson 57", title:"Battle of Uhud — A Costly Lesson", loc:"Mount Uhud — Near Madinah — 3 AH / 625 CE",
+    html:`
+    <div class="prose block"><h3>⚔️ Quraysh Returns for Revenge</h3>
+    <p>A year after Badr, Quraysh returned with 3,000 soldiers. The Muslim army of about 700 took position on the slopes of <strong>Mount Uhud</strong>. The Prophet ﷺ placed 50 archers on a hill with a strict command: <strong>"Do not leave your position — whether we are winning or losing. Stay until I call you."</strong></p>
+    <p>The battle began well — the Muslims were winning. But seeing the enemy fleeing, many archers left their hill to collect spoils. A cavalry unit circled around and hit the Muslims from behind. What had been a victory turned into chaos.</p></div>
+    <div class="prose block"><h3>💔 The Prophet ﷺ Is Wounded — Hamza Falls</h3>
+    <p>The Prophet ﷺ was struck — a tooth knocked out, his face cut and bleeding. A ring of companions formed around him, defending him with their bodies. <strong>Talhah رضي الله عنه</strong> shielded the Prophet ﷺ with his own hand until it was paralysed with arrows.</p>
+    <p>The brave <strong>Hamza رضي الله عنه</strong> — the Lion of Allah — fought furiously until he was martyred. The Prophet ﷺ stood over his uncle's body and wept deeply.</p>
+    <p>But Quraysh did not enter Madinah. The Muslims regrouped. The lesson of Uhud is eternal: obey the Prophet ﷺ even when you think the battle is done, even when victory seems certain. Disobedience has a cost.</p></div>`
+  },
+  /* 57 */ {
+    unit:"Unit 12 · Lesson 58", title:"Battle of the Trench — The Clever Ditch", loc:"Madinah — 5 AH / 627 CE",
+    html:`
+    <div class="prose block"><h3>🌊 10,000 and a City to Protect</h3>
+    <p>A massive coalition — Quraysh, Ghatafan, and others — gathered up to <strong>10,000 fighters</strong> and marched on Madinah to destroy it once and for all. The Muslims had about 3,000. <strong>Salman Al-Farisi رضي الله عنه</strong> — a Persian companion who had journeyed from his homeland to find the Prophet ﷺ — suggested something the Arabs had never seen: dig a wide, deep <strong>trench (khandaq)</strong> along the unprotected side of Madinah.</p>
+    <p>The whole community dug for weeks. The Prophet ﷺ worked alongside everyone — carrying soil, swinging the pickaxe, wearing the dust of labour. The companions sang as they dug, and he sang back with them.</p></div>
+    <div class="prose block"><h3>🌬️ Allah's Army — The Wind</h3>
+    <p>The huge army arrived and camped outside Madinah, unable to cross the trench. Days turned to cold weeks. Their unity collapsed. Then Allah sent a fierce wind that demolished their camps, extinguished their fires, overturned their pots, and drove them away in the night. They retreated in defeat without ever entering the city.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Ahzab (33:25)</span>"And Allah repelled those who disbelieved in their rage — they did not achieve any good. And Allah spared the believers the fight. Allah is Ever-Strong, Almighty."</div>`
+  },
+  /* 58 */ {
+    unit:"Unit 12 · Lesson 59", title:"Treaty of Hudaybiyyah — Peace as Victory", loc:"Hudaybiyyah — Near Makkah — 6 AH / 628 CE",
+    html:`
+    <div class="prose block"><h3>🕌 Going for Umrah — Blocked</h3>
+    <p>In the 6th year after Hijrah, the Prophet ﷺ led about 1,400 companions toward Makkah for <strong>Umrah</strong> — peacefully, with no weapons for war. But Quraysh sent their army to block the road. After long negotiations at a place called <strong>Hudaybiyyah</strong>, a <strong>10-year peace treaty</strong> was signed. The terms seemed unfair to the companions: no Umrah this year, Muslims from Makkah coming to Madinah must be returned, and the Muslims must go home now.</p>
+    <p>Umar رضي الله عنه was upset: <em>"Is this not humiliation?"</em> But the Prophet ﷺ accepted it calmly — and it proved to be a masterstroke of wisdom. In the years of peace that followed, Islam spread faster than ever before. Thousands accepted Islam — including the great warriors <strong>Khalid ibn al-Walid</strong> and <strong>Amr ibn al-As رضي الله عنهما</strong>.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Fath (48:1)</span>"Indeed, We have given you a clear victory." — Revealed about the Treaty of Hudaybiyyah. What looked like defeat, Allah called a clear victory. Sometimes Allah's wisdom in a hard outcome is greater than we can see at the time.</div>`
+  },
+  /* 59 */ {
+    unit:"Unit 13 · Lesson 60", title:"Conquest of Makkah — The Big Forgiveness", loc:"Makkah — 8 AH / 630 CE",
+    html:`
+    <div class="prose block"><h3>🏳️ The Treaty Is Broken — The Army Marches</h3>
+    <p>Quraysh allied with a tribe that attacked a tribe allied with the Muslims — a clear breach of the treaty. The Prophet ﷺ gathered <strong>10,000 Muslims</strong> — the largest force Islam had ever assembled — and marched on Makkah secretly and fast. Makkah had no time to prepare. Their chief, <strong>Abu Sufyan</strong>, came out to meet the army the night before and accepted Islam. The Prophet ﷺ granted his household a place of safety.</p></div>
+    <div class="prose block"><h3>🕌 Entering With Humility</h3>
+    <p>The Prophet ﷺ entered Makkah — the city that had expelled him, tortured his companions, killed his people — with his head bowed so low in gratitude to Allah that his chin nearly touched his saddle. Not triumphant and proud. Humble and grateful.</p>
+    <p>The army entered almost without a fight. A general announcement: <em>"Whoever enters the house of Abu Sufyan is safe. Whoever stays inside is safe. Whoever enters the mosque area is safe."</em> Makkah was taken with barely a drop of blood.</p></div>
+    <div class="prose block"><h3>🕋 Cleaning the Ka'bah — "Go, You Are Free"</h3>
+    <p>The Prophet ﷺ went to the Ka'bah. 360 idols surrounded it. One by one he struck them with his staff, reciting: <em>"Truth has come, and falsehood has perished."</em> (Surah Al-Isra: 81) They fell. Then he stood at the Ka'bah's door and faced the people of Makkah — those who had made his life a misery for 21 years. He asked: <em>"What do you think I will do with you?"</em> They said: "You are a noble brother." He replied: <strong><em>"Go — you are free."</em></strong> He forgave them all. All of them. Most of Makkah accepted Islam that day — not by force, but because they had finally seen his true character.</p></div>
+    <div class="gold-box block"><span class="lbl">🌟 Bilal Atop the Ka'bah</span>That day, the Prophet ﷺ asked Bilal رضي الله عنه — the former slave who had been tortured in Makkah's streets — to climb to the very top of the Ka'bah and call the Adhan. The man they had tried to silence now stood at the highest point in all of Makkah, his voice ringing out across the city: Allahu Akbar. Only Allah writes stories like this.</div>`
+  },
+  /* 60 */ {
+    unit:"Unit 13 · Lesson 61", title:"The Farewell Pilgrimage", loc:"Makkah & Arafah — 10 AH / 632 CE",
+    html:`
+    <div class="prose block"><h3>🕌 Hajj — The Only One He Made as a Prophet</h3>
+    <p>In the 10th year after the Hijrah, the Prophet ﷺ performed his only Hajj — known forever as <strong>Hajjat al-Wada'</strong> — the Farewell Pilgrimage. More than <strong>100,000 Muslims</strong> came with him. On the plain of <strong>Arafah</strong>, standing on his camel, he delivered the most important speech in history — the <strong>Farewell Sermon</strong>. He opened: <em>"O people! Listen carefully, for I do not know whether I will ever meet you in this place again after this year."</em></p></div>
+    <div class="gold-box block"><span class="lbl">📜 Key Points of the Farewell Sermon</span><strong>"Your lives, your property, and your honour are sacred — as sacred as this day, this month, and this city."</strong><br><br><strong>"A Arab has no superiority over a non-Arab, nor a white person over a black person — except through taqwa (God-consciousness)."</strong><br><br><strong>"I am leaving among you two things — you will never go astray as long as you hold to them: the Book of Allah and my Sunnah."</strong><br><br>He asked: <strong>"Have I delivered the message?"</strong> — 100,000 voices: <strong>"YES!"</strong> — He said: <strong>"O Allah, be witness."</strong></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Ma'idah (5:3) — Revealed that day at Arafah</span>"Today I have perfected your religion for you, completed My favour upon you, and have chosen Islam as your way of life." The companions wept. The mission was complete. The message was whole.</div>`
+  },
+  /* 61 */ {
+    unit:"Unit 13 · Lesson 62", title:"The Prophet's Final Days", loc:"Madinah — 11 AH / 632 CE",
+    html:`
+    <div class="prose block"><h3>🌿 A Fever That Would Not Leave</h3>
+    <p>In the month of Safar, 11 AH, the Prophet ﷺ began to feel ill — a severe headache and high fever. He continued leading prayers for as long as his strength allowed. Then, too weak to stand, he asked <strong>Abu Bakr رضي الله عنه</strong> to lead the prayers in his place. The companions who saw this understood what it meant — and their hearts tightened with grief.</p></div>
+    <div class="prose block"><h3>💛 A Father's Last Word to His Daughter</h3>
+    <p>His daughter <strong>Fatimah رضي الله عنها</strong> came to his side. He whispered something to her — she burst into tears. Then he whispered again — she smiled. She later explained: <em>First he told me he would die soon — that is why I cried. Then he told me I would be the first of his family to join him — and that made me smile.</em></p></div>
+    <div class="prose block"><h3>💙 His Last Morning — A Monday</h3>
+    <p>On <strong>Monday, 12 Rabi' al-Awwal, 11 AH (8 June 632 CE)</strong>, the Prophet ﷺ passed away peacefully in the room of his wife <strong>Aishah رضي الله عنها</strong>. He was <strong>63 years old</strong>. His last words — heard by Aishah — were: <em>"Rather the Highest Companion (Ar-Rafiq al-A'la)."</em> He chose Allah's presence over remaining in this world.</p>
+    <p>When the news spread, the companions were shattered. Even the great Umar رضي الله عنه stood outside declaring he would fight anyone who said the Prophet had died. Then Abu Bakr رضي الله عنه came, entered quietly, uncovered the Prophet's ﷺ face, kissed his forehead, and said: <em>"You are beautiful in life and beautiful in death."</em> Then he went out and spoke the most famous words ever said in a moment of loss:</p></div>
+    <div class="gold-box block"><span class="lbl">💛 Abu Bakr's Unforgettable Words</span>"O people! Whoever worshipped Muhammad — Muhammad has died. But whoever worships Allah — Allah is Ever-Living and will never die." He recited: "Muhammad is not but a messenger. Messengers have already passed on before him..." (Surah Aal-Imran: 144)<br><br>Umar said: "By Allah, it was as if I had never heard that verse before in my life. My legs gave way and I fell to the ground."</div>`
+  },
+  /* 62 */ {
+    unit:"Unit 13 · Lesson 63", title:"His Legacy — He Lives in Our Hearts", loc:"The Whole World",
+    html:`
+    <div class="prose block"><h3>🌍 What He Left Behind</h3>
+    <p>The Prophet Muhammad ﷺ was buried in the room of Aishah رضي الله عنها — now enclosed within <strong>Masjid An-Nabawi</strong> in Madinah — and millions visit every year to send salah upon him. He left no gold, no palace, no kingdom. What he left was far greater: the <strong>Quran</strong> — perfectly preserved and unchanged — and his <strong>Sunnah</strong> — his way of life, recorded in extraordinary detail by his companions.</p></div>
+    <div class="prose block"><h3>📈 A Light That Keeps Growing</h3>
+    <p>When the Prophet ﷺ was born, Islam had zero followers. When he died, the entire Arabian Peninsula was Muslim. Within a century, the message had reached from Spain in the west to China in the east. Today, Muslims are found on every continent, in every country on Earth.</p>
+    <p>The number of Muslims in the world keeps growing — and what matters most is this: every single day, in every part of the world, millions of people wake up, turn toward Makkah, and say: <em>"Allahu Akbar."</em> They fast in Ramadan as he did. They pray as he taught. They greet each other with <em>As-Salamu Alaykum</em>. His way of life did not stay in 7th-century Arabia — it lives in the daily choices of Muslims everywhere, in every generation.</p></div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Anbiya (21:107)</span>"And We have not sent you except as a mercy to all the worlds." He was sent for all people, all places, all times — and he is still a mercy to us through the Quran he carried and the example he left.</div>
+    <div class="quran-box block"><span class="lbl">Surah Al-Ahzab (33:21)</span>"There has certainly been for you in the Messenger of Allah an excellent pattern (Uswah Hasanah) for anyone whose hope is in Allah and the Last Day and who remembers Allah often."</div>
+    <div class="prose block"><h3>💛 How Do We Show We Love Him?</h3>
+    <p>The Prophet ﷺ said: <em>"None of you truly believes until I am more beloved to him than his children, his father, and all of mankind."</em> (Bukhari & Muslim). Love is not only a feeling — it is action:</p>
+    <div class="badges"><span class="badge">📖 Learn about his life</span><span class="badge">🕌 Pray as he taught</span><span class="badge">💛 Send salah upon him often</span><span class="badge">😊 Treat people with his kindness</span><span class="badge">✅ Be honest as he was</span><span class="badge">🤲 Make du'a with his words</span></div></div>
+    <div class="final-card">
+      <div class="final-arabic">صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ</div>
+      <div class="final-text">May Allah's peace and blessings be upon him — always and forever.<br>May we be among those who truly follow him, truly love him,<br>and meet him at the blessed pool of Al-Kawthar.<br><br><strong style="color:#E8C84A;">Allahumma Salli 'ala Muhammad wa 'ala aali Muhammad — Ameen.</strong></div>
+    </div>`
+  }
+];
+
+/* ─── NAVIGATION ─── */
+function openLesson(n) {
+  currentLesson = n;
+  var L = LESSONS[n];
+
+  // update topbar
+  document.getElementById('topbarNum').textContent = 'Lesson ' + (n+1) + ' of ' + TOTAL;
+  document.getElementById('topbarTitle').textContent = L.title;
+  var pct = Math.round(((n+1)/TOTAL)*100);
+  document.getElementById('topbarFill').style.width = pct + '%';
+  document.getElementById('topbarPct').textContent = pct + '%';
+
+  // inject lesson content
+  var navPrev = n > 0
+    ? '<button class="nav-btn" onclick="openLesson(' + (n-1) + ')">← Previous</button>'
+    : '<button class="nav-btn" disabled>← Previous</button>';
+  var navNext = n < TOTAL-1
+    ? '<button class="nav-btn primary" onclick="openLesson(' + (n+1) + ')">Next Lesson →</button>'
+    : '<button class="nav-btn primary" onclick="goHome()">↩ Back to All Lessons</button>';
+
+  var hasActivities = L.activities && L.activities.length > 0;
+  var actBtn = hasActivities
+    ? '<button class="nav-btn act-btn" onclick="openActivities(' + n + ')">✏️ Activities</button>'
+    : '';
+
+  document.getElementById('lessonBody').innerHTML =
+    '<div class="lesson-eyebrow">' + L.unit + '</div>' +
+    '<h1 class="lesson-h1">' + L.title + '</h1>' +
+    '<div class="lesson-loc">' + L.loc + '</div>' +
+    L.html +
+    '<div class="lesson-nav">' +
+      navPrev +
+      '<button class="nav-btn home-btn" onclick="goHome()">&#9783; All Lessons</button>' +
+      actBtn +
+      navNext +
+    '</div>';
+
+  // switch screens
+  document.getElementById('homeScreen').style.display = 'none';
+  document.getElementById('lessonScreen').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  // mark done
+  doneLessons.add(n);
+  updateHomeProgress();
+}
+
+function goHome() {
+  // mark current as done
+  doneLessons.add(currentLesson);
+  document.getElementById('lessonScreen').style.display = 'none';
+  document.getElementById('homeScreen').style.display = 'block';
+  updateHomeProgress();
+  window.scrollTo(0, 0);
+}
+
+/* ─── ACTIVITY ENGINE ─── */
+var actLesson = 0, actStep = 0, actScore = 0;
+var actOrderState = [];
+
+function openActivities(n) {
+  actLesson = n;
+  actStep = 0;
+  actScore = 0;
+  document.getElementById('lessonScreen').style.display = 'none';
+  document.getElementById('activityScreen').style.display = 'block';
+  var L = LESSONS[n];
+  document.getElementById('actTopbarLabel').textContent = 'Activities — ' + L.title;
+  buildPips(L.activities.length);
+  renderActivity();
+  window.scrollTo(0, 0);
+}
+
+function backToLesson() {
+  document.getElementById('activityScreen').style.display = 'none';
+  document.getElementById('lessonScreen').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function buildPips(total) {
+  var html = '';
+  for (var i = 0; i < total; i++) html += '<div class="act-pip" id="pip' + i + '"></div>';
+  document.getElementById('actPips').innerHTML = html;
+}
+
+function updatePips(total) {
+  for (var i = 0; i < total; i++) {
+    var p = document.getElementById('pip' + i);
+    if (!p) continue;
+    p.className = 'act-pip' + (i < actStep ? ' done' : (i === actStep ? ' current' : ''));
+  }
+}
+
+function renderActivity() {
+  var L = LESSONS[actLesson];
+  var acts = L.activities;
+  document.getElementById('actTopbarTitle').textContent = 'Activity ' + (actStep + 1) + ' of ' + acts.length;
+  updatePips(acts.length);
+
+  if (actStep >= acts.length) { renderScore(acts.length); return; }
+
+  var a = acts[actStep];
+  var typeLabel = { mcq: '📝 Multiple Choice', truefalse: '✔️ True or False', fillin: '✏️ Fill in the Blank', ordering: '🔢 Put in Order', reflection: '💡 Reflection' }[a.type] || 'Activity';
+  var inner = '<div class="act-type-badge">' + typeLabel + '</div><div class="act-question">' + a.question + '</div>';
+
+  if (a.type === 'mcq') {
+    inner += '<div class="act-options">';
+    a.options.forEach(function(opt, i) {
+      inner += '<button class="act-option" onclick="checkMCQ(' + i + ')">' + opt + '</button>';
+    });
+    inner += '</div>';
+  } else if (a.type === 'truefalse') {
+    inner += '<div class="act-tf"><button class="act-tf-btn" onclick="checkTF(true)">🟢 True</button><button class="act-tf-btn" onclick="checkTF(false)">🔴 False</button></div>';
+  } else if (a.type === 'fillin') {
+    inner += '<div class="act-fillin-row"><input class="act-input" id="actFillInput" placeholder="Type your answer..." onkeydown="if(event.key===\'Enter\')checkFill()"><button class="act-submit" onclick="checkFill()">Check</button></div>';
+  } else if (a.type === 'ordering') {
+    actOrderState = a.items.slice().sort(function() { return Math.random() - 0.5; });
+    inner += renderOrderList();
+  } else if (a.type === 'reflection') {
+    inner += '<textarea class="act-reflection-input" id="actReflection" placeholder="Write your thoughts here..."></textarea>';
+  }
+
+  inner += '<div class="act-feedback" id="actFeedback"></div>';
+
+  var isLast = actStep === acts.length - 1;
+  var nextLabel = isLast ? 'See Score →' : 'Next →';
+  inner += '<div class="act-nav"><button class="nav-btn primary" id="actNextBtn" onclick="nextActivity()" style="display:none">' + nextLabel + '</button>';
+  if (a.type === 'reflection') inner += '<button class="nav-btn primary" onclick="submitReflection()" style="margin-left:auto">Submit →</button>';
+  inner += '</div>';
+
+  document.getElementById('actBody').innerHTML = '<div class="act-card">' + inner + '</div>';
+  if (a.type === 'ordering') attachOrderHandlers();
+}
+
+function renderOrderList() {
+  var html = '<div class="act-order-list" id="actOrderList">';
+  actOrderState.forEach(function(item, i) {
+    html += '<div class="act-order-item" data-idx="' + i + '"><span class="ord-num">' + (i+1) + '</span><span>' + item + '</span><div class="act-order-btns"><button class="act-order-btn" data-dir="up" data-i="' + i + '">▲</button><button class="act-order-btn" data-dir="down" data-i="' + i + '">▼</button></div></div>';
+  });
+  html += '</div><button class="act-order-check" onclick="checkOrder()">Check Order</button>';
+  return html;
+}
+
+function attachOrderHandlers() {
+  document.getElementById('actOrderList').addEventListener('click', function(e) {
+    var btn = e.target.closest('.act-order-btn');
+    if (!btn) return;
+    var i = parseInt(btn.getAttribute('data-i'));
+    var dir = btn.getAttribute('data-dir');
+    if (dir === 'up' && i > 0) { var tmp = actOrderState[i]; actOrderState[i] = actOrderState[i-1]; actOrderState[i-1] = tmp; }
+    if (dir === 'down' && i < actOrderState.length - 1) { var tmp = actOrderState[i]; actOrderState[i] = actOrderState[i+1]; actOrderState[i+1] = tmp; }
+    document.getElementById('actOrderList').outerHTML = renderOrderList().match(/<div[^>]*id="actOrderList"[\s\S]*?<\/div>(?=\s*<\/div>)/)[0];
+    // re-render the list part only
+    var listWrap = document.querySelector('#actBody .act-order-list');
+    if (listWrap) listWrap.outerHTML = renderOrderListHTML();
+    attachOrderHandlers();
+  });
+}
+
+function renderOrderListHTML() {
+  var html = '<div class="act-order-list" id="actOrderList">';
+  actOrderState.forEach(function(item, i) {
+    html += '<div class="act-order-item" data-idx="' + i + '"><span class="ord-num">' + (i+1) + '</span><span>' + item + '</span><div class="act-order-btns"><button class="act-order-btn" data-dir="up" data-i="' + i + '">▲</button><button class="act-order-btn" data-dir="down" data-i="' + i + '">▼</button></div></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function showFeedback(msg, type) {
+  var fb = document.getElementById('actFeedback');
+  if (!fb) return;
+  fb.innerHTML = msg;
+  fb.className = 'act-feedback show ' + type;
+  var nb = document.getElementById('actNextBtn');
+  if (nb) nb.style.display = 'block';
+}
+
+function checkMCQ(i) {
+  var a = LESSONS[actLesson].activities[actStep];
+  var btns = document.querySelectorAll('.act-option');
+  btns.forEach(function(b) { b.disabled = true; });
+  if (i === a.answer) {
+    btns[i].classList.add('correct');
+    actScore++;
+    showFeedback('✅ Correct! ' + (a.explain || ''), 'ok');
+  } else {
+    btns[i].classList.add('wrong');
+    btns[a.answer].classList.add('correct');
+    showFeedback('❌ Not quite. The correct answer is: <strong>' + a.options[a.answer] + '</strong>' + (a.explain ? '. ' + a.explain : ''), 'bad');
+  }
+}
+
+function checkTF(val) {
+  var a = LESSONS[actLesson].activities[actStep];
+  var btns = document.querySelectorAll('.act-tf-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+  var correct = val === a.answer;
+  if (correct) {
+    (val ? btns[0] : btns[1]).classList.add('correct');
+    actScore++;
+    showFeedback('✅ Correct!' + (a.explain ? ' ' + a.explain : ''), 'ok');
+  } else {
+    (val ? btns[0] : btns[1]).classList.add('wrong');
+    (a.answer ? btns[0] : btns[1]).classList.add('correct');
+    showFeedback('❌ Not quite. The answer is <strong>' + (a.answer ? 'True' : 'False') + '</strong>.' + (a.explain ? ' ' + a.explain : ''), 'bad');
+  }
+}
+
+function checkFill() {
+  var a = LESSONS[actLesson].activities[actStep];
+  var inp = document.getElementById('actFillInput');
+  if (!inp) return;
+  var val = inp.value.trim();
+  var correct = val.toLowerCase() === a.answer.toLowerCase();
+  inp.classList.add(correct ? 'correct' : 'wrong');
+  inp.disabled = true;
+  document.querySelector('.act-submit').disabled = true;
+  if (correct) { actScore++; showFeedback('✅ Correct!', 'ok'); }
+  else showFeedback('❌ The answer is <strong>' + a.answer + '</strong>.', 'bad');
+}
+
+function checkOrder() {
+  var a = LESSONS[actLesson].activities[actStep];
+  var items = document.querySelectorAll('.act-order-item');
+  var allCorrect = true;
+  actOrderState.forEach(function(item, i) {
+    var correct = item === a.items[i];
+    if (!correct) allCorrect = false;
+    items[i].classList.add(correct ? 'correct' : 'wrong');
+  });
+  document.querySelectorAll('.act-order-btn').forEach(function(b) { b.disabled = true; });
+  document.querySelector('.act-order-check').disabled = true;
+  if (allCorrect) { actScore++; showFeedback('✅ Perfect order!', 'ok'); }
+  else showFeedback('❌ Not quite. The correct order is: <strong>' + a.items.join(' → ') + '</strong>.', 'bad');
+}
+
+function submitReflection() {
+  var inp = document.getElementById('actReflection');
+  var val = inp ? inp.value.trim() : '';
+  if (!val) { showFeedback('Please write something before submitting.', 'info'); return; }
+  actScore++;
+  if (inp) inp.disabled = true;
+  document.querySelectorAll('.act-nav button').forEach(function(b) { b.disabled = true; });
+  showFeedback('💡 Thank you for sharing your reflection!', 'info');
+  var nb = document.getElementById('actNextBtn');
+  if (nb) { nb.style.display = 'block'; nb.disabled = false; }
+}
+
+function nextActivity() {
+  actStep++;
+  renderActivity();
+  window.scrollTo(0, 0);
+}
+
+function renderScore(total) {
+  var pct = Math.round((actScore / total) * 100);
+  var emoji = pct === 100 ? '🌟' : pct >= 80 ? '👏' : pct >= 60 ? '😊' : '💪';
+  var msg = pct === 100 ? 'Perfect score! Excellent!' : pct >= 80 ? 'Great work!' : pct >= 60 ? 'Good effort!' : 'Keep reviewing and try again!';
+  document.getElementById('actBody').innerHTML =
+    '<div class="act-score-card">'
+    + '<div class="act-score-emoji">' + emoji + '</div>'
+    + '<div class="act-score-title">' + msg + '</div>'
+    + '<div class="act-score-sub">You scored</div>'
+    + '<div class="act-score-num">' + actScore + ' / ' + total + '</div>'
+    + '</div>'
+    + '<div class="act-nav" style="margin-top:1.5rem;">'
+    + '<button class="nav-btn" onclick="backToLesson()">← Back to Lesson</button>'
+    + '<button class="nav-btn primary" onclick="openActivities(' + actLesson + ')">Try Again</button>'
+    + '</div>';
+  updatePips(total);
+  document.getElementById('actTopbarTitle').textContent = 'Completed!';
+}
+
+/* ─── SA'I SIMULATION ─── */
+var saiStep = 0, saiRunning = false, saiTimer = null;
+
+// Each lap: where the figure travels TO, and the label
+var saiLaps = [
+  { to: '90%', label: 'Lap 1: Safa → Marwa', scaleX: 1  },
+  { to: '2%',  label: 'Lap 2: Marwa → Safa',  scaleX: -1 },
+  { to: '90%', label: 'Lap 3: Safa → Marwa', scaleX: 1  },
+  { to: '2%',  label: 'Lap 4: Marwa → Safa',  scaleX: -1 },
+  { to: '90%', label: 'Lap 5: Safa → Marwa', scaleX: 1  },
+  { to: '2%',  label: 'Lap 6: Marwa → Safa',  scaleX: -1 },
+  { to: '90%', label: 'Lap 7: Safa → Marwa', scaleX: 1  }
+];
+
+function saiStart() {
+  if (saiRunning) return;
+  var btn = document.getElementById('saiBtnStart');
+  if (btn) btn.disabled = true;
+  saiRunning = true;
+  saiStep = 0;
+  saiRunLap();
+}
+
+function saiRunLap() {
+  if (saiStep >= saiLaps.length) {
+    var status = document.getElementById('saiStatus');
+    if (status) status.innerHTML = '<strong>✅ Complete</strong>';
+    // mark all dots done
+    for (var i = 0; i < 7; i++) {
+      var d = document.getElementById('saiDot' + i);
+      if (d) d.className = 'sai-dot done';
+    }
+    saiRunning = false;
+    return;
+  }
+
+  var lap = saiLaps[saiStep];
+  var fig = document.getElementById('saiHajar');
+  var status = document.getElementById('saiStatus');
+  if (!fig || !status) return;
+
+  // update dots
+  for (var i = 0; i < 7; i++) {
+    var d = document.getElementById('saiDot' + i);
+    if (!d) continue;
+    d.className = i < saiStep ? 'sai-dot done' : (i === saiStep ? 'sai-dot active' : 'sai-dot');
+  }
+
+  // update status and direction
+  status.innerHTML = '<strong>' + lap.label + '</strong>';
+  fig.style.transform = 'translateY(-50%) scaleX(' + lap.scaleX + ')';
+
+  // trigger movement (must happen in next frame so transition fires)
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      fig.style.left = lap.to;
+    });
+  });
+
+  saiStep++;
+  // wait for CSS transition (1.6s) + small pause before next lap
+  saiTimer = setTimeout(saiRunLap, 2000);
+}
+
+function saiReset() {
+  clearTimeout(saiTimer);
+  saiStep = 0; saiRunning = false;
+  var fig = document.getElementById('saiHajar');
+  if (fig) {
+    // disable transition temporarily so reset is instant
+    fig.style.transition = 'none';
+    fig.style.left = '2%';
+    fig.style.transform = 'translateY(-50%) scaleX(1)';
+    setTimeout(function() {
+      if (fig) fig.style.transition = '';
+    }, 50);
+  }
+  var status = document.getElementById('saiStatus');
+  if (status) status.innerHTML = 'Press <strong>Start</strong> to begin the Sa\'i';
+  for (var i = 0; i < 7; i++) {
+    var d = document.getElementById('saiDot' + i);
+    if (d) d.className = i === 0 ? 'sai-dot active' : 'sai-dot';
+  }
+  var btn = document.getElementById('saiBtnStart');
+  if (btn) btn.disabled = false;
+}
+
+function updateHomeProgress() {
+  var count = doneLessons.size;
+  var pct = Math.round((count / TOTAL) * 100);
+  document.getElementById('homeProgressFill').style.width = pct + '%';
+  document.getElementById('homeDoneCount').textContent = count + ' of ' + TOTAL + ' lessons completed';
+  // update tile checkmarks
+  doneLessons.forEach(function(i) {
+    var t = document.getElementById('tile' + i);
+    if (t) t.classList.add('done');
+  });
+}
+</script>
+</body>
+</html>
